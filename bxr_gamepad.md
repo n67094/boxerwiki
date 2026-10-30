@@ -13,7 +13,30 @@ Each one is identified by an `index` in [0, `BXR_GAMEPAD_MAX`), the slot
 Boxer polls connections and feeds events itself.
 
 <a name="line-undefined"></a>
-## Public API
+## Enums
+
+<a name="line-undefined"></a>
+Gamepad buttons.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+Gamepad axes.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
 
 <a name="line-undefined"></a>
 Get the number of gamepads currently connected.
@@ -102,6 +125,7 @@ BXR_API const char *bxr_gamepad_serial(int index)
 Check if a button is held down.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `button` button to check, in [0, `BXR_GAMEPAD_BUTTON_SIZE`).
 
 `return` true if held, false otherwise or if the gamepad is not connected.
@@ -134,6 +158,7 @@ Check if a button was pressed this frame.
 True for exactly one frame per press.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `button` button to check, in [0, `BXR_GAMEPAD_BUTTON_SIZE`).
 
 `return` true if pressed since the previous frame, false otherwise or if the
@@ -152,6 +177,7 @@ Check if a button was released this frame.
 True for exactly one frame per release.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `button` button to check, in [0, `BXR_GAMEPAD_BUTTON_SIZE`).
 
 `return` true if released since the previous frame, false otherwise or if
@@ -168,6 +194,7 @@ BXR_API bool bxr_gamepad_just_released(int index, bxr_gamepad_button_e button)
 Get how long a button has been held down.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `button` button to check, in [0, `BXR_GAMEPAD_BUTTON_SIZE`).
 
 `return` the time in milliseconds since the press, or 0 if the button is
@@ -183,7 +210,8 @@ BXR_API Uint64 bxr_gamepad_held_time(int index, bxr_gamepad_button_e button)
 <a name="line-undefined"></a>
 Get the current value of an axis, after the deadzone is applied.
 
-`index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`) .
+`index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `axis` axis to read, in [0, `BXR_GAMEPAD_AXIS_SIZE`).
 
 `return` the value in [-1, 1) for sticks (positive is right/down) and [0, 1)
@@ -202,6 +230,7 @@ Get the value an axis had at the end of the previous frame.
 Compare with `bxr_gamepad_axis()` to detect a change this frame.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `axis` axis to read, in [0, `BXR_GAMEPAD_AXIS_SIZE`).
 
 `return` the value, same range as `bxr_gamepad_axis()`, or 0 if the gamepad
@@ -218,14 +247,18 @@ BXR_API float bxr_gamepad_axis_prev(int index, bxr_gamepad_axis_e axis)
 Start a rumble effect, replacing any effect in progress.
 
 `index` slot of the gamepad, in [0, `BXR_GAMEPAD_MAX`).
+
 `low_frequency` intensity of the low frequency motor, in [0, 0xFFFF], same
 scale as `SDL_RumbleGamepad()`; 0 turns the motor off.
+
 `high_frequency` intensity of the high frequency motor, in [0, 0xFFFF], same
 scale as `SDL_RumbleGamepad()`; 0 turns the motor off.
+
 `duration_ms` duration of the effect in milliseconds; 0 stops the rumble.
 
 `return` true on success, false on failure or if the gamepad is not
 connected.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp

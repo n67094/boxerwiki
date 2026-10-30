@@ -3,12 +3,15 @@ File `bxr_sampler.h`.
 
 Copyright (c) 2026 nsix. All rights reserved.
 
-# GPU Samplers
+# Samplers
 
-GPU samplers used to sample textures in shaders.
+samplers used to sample textures in shaders.
 
 Create a sampler from one of the `bxr_sampler_e` presets, bind it with
 `bxr_painter_set_sampler()`, and release it with `bxr_sampler_destroy()`.
+
+<a name="line-undefined"></a>
+## Enums
 
 <a name="line-undefined"></a>
 Sampler presets: filtering (point = nearest, linear) and address mode
@@ -22,30 +25,20 @@ typedef enum
 
 
 <a name="line-undefined"></a>
-## Internal API
+## Typedefs
 
 <a name="line-undefined"></a>
-Initializes the sampler system.
+Handle to a GPU sampler.
 
 ```cpp
-bool bxr_sampler_setup(void)
+typedef struct bxr_sampler_s
 ```
 
 ---
 
 
 <a name="line-undefined"></a>
-Tears down the sampler system.
-
-```cpp
-void bxr_sampler_teardown(void)
-```
-
----
-
-
-<a name="line-undefined"></a>
-## Public API
+## API
 
 <a name="line-undefined"></a>
 Create a GPU sampler from a preset.
@@ -54,6 +47,7 @@ Create a GPU sampler from a preset.
 
 `return` the created sampler, or a sampler whose `sampler` field is NULL on
 failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller owns the sampler and must release it with

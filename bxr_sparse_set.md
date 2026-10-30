@@ -20,6 +20,22 @@ Typical usage: create the set, insert / remove / check handles, iterate the
 dense array, destroy the set.
 
 <a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
+Handle to a sparse set.
+
+```cpp
+typedef struct bxr_sparse_set_s bxr_sparse_set_t
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Create an empty sparse set.
 
 The set grows automatically when a handle `>=` the capacity is inserted.
@@ -55,6 +71,7 @@ void bxr_sparse_set_destroy(bxr_sparse_set_t *set)
 Insert a handle into the set.
 
 `set` the set. Must not be NULL.
+
 `handle` the handle to insert.
 
 `return` true on success, false if the handle is already in the set or if
@@ -71,6 +88,7 @@ bool bxr_sparse_set_insert(bxr_sparse_set_t *set, size_t handle)
 Remove a handle from the set.
 
 `set` the set. Must not be NULL.
+
 `handle` the handle to remove.
 
 `return` true on success, false if the handle is not in the set.
@@ -86,7 +104,9 @@ bool bxr_sparse_set_remove(bxr_sparse_set_t *set, size_t handle)
 Check whether a handle is in the set.
 
 `set` the set. Must not be NULL.
+
 `handle` the handle to look up.
+
 `found` optional output, may be NULL. Receives the handle index in the dense
 array, or `SIZE_MAX` if the handle is not in the set.
 

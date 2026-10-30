@@ -6,17 +6,60 @@ Copyright (c) 2025 nsix. All rights reserved.
 # Math Utilities
 
 <a name="line-undefined"></a>
-Aliases for the SDL math functions, see the SDL documentation for details.
+## Typedefs
+
+<a name="line-undefined"></a>
+2D vector with `x` and `y` components.
 
 ```cpp
-#define bxr_min SDL_min
+typedef struct bxr_vec2_s
 ```
 
 ---
 
 
 <a name="line-undefined"></a>
-## Scalar Functions and Macros
+2D point with `x` and `y` coordinates.
+
+```cpp
+typedef bxr_vec2_t bxr_point_t
+```
+
+---
+
+
+<a name="line-undefined"></a>
+2D line segment with endpoints `a` and `b`.
+
+```cpp
+typedef struct bxr_line_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
+##### 2D triangle with vertices `a`, `b` and `c`.
+
+```cpp
+typedef struct bxr_triangle_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
+2D rectangle with top-left corner `(x, y)` and size `(w, h)`.
+
+```cpp
+typedef struct bxr_rect_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## Macros
 
 <a name="line-undefined"></a>
 Computes the sign of a number.
@@ -50,7 +93,9 @@ BXR_INLINE bool
 Linearly interpolates between two values.
 
 `a` the start value, returned when `step` is 0.
+
 `b` the end value, returned when `step` is 1.
+
 `step` the position between the values, usually in [0, 1]; values outside
 this range extrapolate.
 
@@ -67,7 +112,9 @@ BXR_INLINE float
 Linearly interpolates between two angles along the shortest arc.
 
 `angle1` the start angle in radians.
+
 `angle2` the end angle in radians.
+
 `step` the position between the angles, usually in [0, 1].
 
 `return` the interpolated angle in radians.
@@ -317,6 +364,7 @@ BXR_INLINE bxr_vec2_t
 Builds a vector from polar coordinates.
 
 `angle` the angle in radians from the positive x axis.
+
 `len` the length of the vector.
 
 `return` the vector in cartesian coordinates.
@@ -369,9 +417,6 @@ BXR_INLINE bxr_vec2_t
 
 
 <a name="line-undefined"></a>
-## Line
-
-<a name="line-undefined"></a>
 Constructs a `bxr_line_t` compound literal from the segment `(ax, ay)` to
 `(bx, by)`.
 
@@ -383,9 +428,6 @@ Constructs a `bxr_line_t` compound literal from the segment `(ax, ay)` to
 
 
 <a name="line-undefined"></a>
-## Triangle
-
-<a name="line-undefined"></a>
 Constructs a `bxr_triangle_t` compound literal from its three vertices.
 
 ```cpp
@@ -394,9 +436,6 @@ Constructs a `bxr_triangle_t` compound literal from its three vertices.
 
 ---
 
-
-<a name="line-undefined"></a>
-## Rectangle
 
 <a name="line-undefined"></a>
 Constructs a `bxr_rect_t` compound literal from its top-left corner

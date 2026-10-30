@@ -6,7 +6,7 @@ Copyright (c) 2026 nsix. All rights reserved.
 # Error Handling
 
 <a name="line-undefined"></a>
-## Public API
+## API
 
 <a name="line-undefined"></a>
 Set the error message.

@@ -7,6 +7,7 @@ Copyright (c) 2026 nsix. All rights reserved.
 
 Example usage:
 
+```c
 BXR_UNIT_CASE(test_case) { // Define case
   BXR_UNIT_ASSERT(1 + 1 == 2) // Assert something
   BXR_UNIT_ASSERT(...)
@@ -18,60 +19,10 @@ BXR_UNIT_SUITE(test_suite) { // Define suite
 }
 
 BXR_UNIT_RUN_SUITE(test_suite) // Run suite
-
-<a name="line-undefined"></a>
-Internal API
-
-<a name="line-undefined"></a>
-Asserts that an expression is true and reports the result to the console.
-
-`passed` indicates whether the assertion passed or failed.
-
-`expr` is the string representation of the expression being asserted.
-
-`file` is the name of the source file where the assertion is located.
-
-`line` is the line number in the source file where the assertion is located.
-
-`return` true if the assertion passed, false if it failed.
-
-```cpp
-bool bxr_unit_assert(bool passed,
 ```
 
----
-
-
 <a name="line-undefined"></a>
-Runs a test case function and reports the result to the console.
-
-`name` is the name of the test case function being run.
-
-`case_cb` is the test case callback function to execute.
-
-```cpp
-void bxr_unit_run_case(const char *const name, bxr_unit_case_cb case_cb)
-```
-
----
-
-
-<a name="line-undefined"></a>
-Runs a test suite function and reports the results to the console.
-
-`name` is the name of the test suite function being run.
-
-`suite_cb` is the test suite callback function to run.
-
-```cpp
-void bxr_unit_run_suite(const char *const name, bxr_unit_suite_cb suite_cb)
-```
-
----
-
-
-<a name="line-undefined"></a>
-Public API
+API
 
 <a name="line-undefined"></a>
 Runs a test suite function and reports the results to the console.

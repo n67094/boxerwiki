@@ -31,7 +31,9 @@ stop the timer. It runs on a separate thread, so it must be thread-safe.
 
 `interval_ms` the delay before the first call, in milliseconds; also passed
 to `callback` as `interval`.
+
 `callback` the function to call when the delay has elapsed, must not be NULL.
+
 `udata` a pointer passed to `callback`, may be NULL.
 
 `return` the timer ID on success, or 0 on failure.

@@ -8,6 +8,35 @@ Copyright (c) 2026 nsix. All rights reserved.
 Hash map from string keys to sets of `Uint32` values (boxer resource ids).
 
 <a name="line-undefined"></a>
+## Enums
+
+<a name="line-undefined"></a>
+Slot state in the multimap.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
+Handle to a multimap.
+
+```cpp
+typedef struct bxr_multimap_s bxr_multimap_t
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Create an empty multimap.
 
 `initial_size` initial slot count. Rounded up to the next power of two, with
@@ -32,10 +61,13 @@ The key is created if missing. Adding a value already present for the key
 is a no-op that succeeds.
 
 `map` the multimap; must not be NULL.
+
 `key` the key; must not be NULL. The string is copied.
+
 `value` the value to add.
 
 `return` true on success, false on allocation failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -52,7 +84,9 @@ Value order in the bucket is not preserved. The key is removed when its last
 value is removed.
 
 `map` the multimap; must not be NULL.
+
 `key` the key; must not be NULL.
+
 `value` the value to remove.
 
 `return` true if the value was removed, false if the key or the value was
@@ -69,6 +103,7 @@ bool
 Remove a key and all its values.
 
 `map` the multimap; must not be NULL.
+
 `key` the key; must not be NULL.
 
 `return` true if the key was removed, false if it was not found.
@@ -84,7 +119,9 @@ bool bxr_multimap_remove(bxr_multimap_t *map, const char *key)
 Get a copy of the values of a key, in no particular order.
 
 `map` the multimap; must not be NULL.
+
 `key` the key; must not be NULL.
+
 `out_values` receives a newly allocated array of the values, or NULL if the
 key does not exist. May be NULL to only query the count.
 

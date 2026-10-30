@@ -12,13 +12,37 @@ key value of the current keyboard layout, use `bxr_key_name()` or
 `bxr_key_name_ex()` with the appropriate modifiers.
 
 <a name="line-undefined"></a>
-## Public API
+## Enums
+
+<a name="line-undefined"></a>
+Keyboard keys.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+Keyboard modifiers.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
 
 <a name="line-undefined"></a>
 Get the name of a key in the current keyboard layout, using the given
 modifier state.
 
 `key` key to name, in `[0, BXR_KEY_SIZE)`.
+
 `mod` modifiers to apply, as a bitwise OR of `bxr_keymod_e` values.
 
 `return` the key name, or an empty string if there is no name for the key or

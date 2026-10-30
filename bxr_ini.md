@@ -16,7 +16,7 @@ File extension doesn't matter, but `.ini` is recommended.
 
 Example INI file:
 
-```
+```c
 [Window] ; comment
 title="Test"
 width=800
@@ -30,6 +30,29 @@ test= ; this will be ignored
 ```
 
 <a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
+Handle to an INI reader.
+
+```cpp
+typedef struct bxr_ini_reader_s bxr_ini_reader_t
+```
+
+---
+
+
+<a name="line-undefined"></a>
+Handle to an INI writer.
+
+```cpp
+typedef struct bxr_ini_writer_s bxr_ini_writer_t
+```
+
+---
+
+
+<a name="line-undefined"></a>
 ## Reader API
 
 <a name="line-undefined"></a>
@@ -39,9 +62,11 @@ Malformed lines are skipped silently, so parsing itself never fails.
 
 `data` INI text. Must not be `NULL`. Remains owned by the caller and may be
 freed once the call returns.
+
 `length` size of `data` in bytes.
 
 `return` the reader, or `NULL` on failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_reader()`.
@@ -73,7 +98,9 @@ Get the string value of a key.
 If the key appears several times in the section, the first one wins.
 
 `ini` reader to query. Must not be `NULL`.
+
 `section` section name, case-insensitive. Must not be `NULL`.
+
 `key` key name, case-insensitive. Must not be `NULL`.
 
 `return` the unquoted and unescaped value, or `NULL` if not found.
@@ -92,7 +119,9 @@ BXR_API const char *
 Get the value of a key parsed as a number.
 
 `ini` reader to query. Must not be `NULL`.
+
 `section` section name, case-insensitive. Must not be `NULL`.
+
 `key` key name, case-insensitive. Must not be `NULL`.
 
 `return` the parsed value, or `0.0f` if not found.
@@ -108,8 +137,11 @@ BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
 Get the string value of a key, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
+
 `section` section name, case-insensitive. Must not be `NULL`.
+
 `key` key name, case-insensitive. Must not be `NULL`.
+
 `default_value` returned as is when the key is not found. May be `NULL`.
 
 `return` the value (owned by the reader, see `bxr_ini_read_str()`), or
@@ -126,8 +158,11 @@ BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
 Get the value of a key parsed as a number, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
+
 `section` section name, case-insensitive. Must not be `NULL`.
+
 `key` key name, case-insensitive. Must not be `NULL`.
+
 `default_value` returned when the key is not found.
 
 `return` the parsed value, or `default_value` if not found.
@@ -146,6 +181,7 @@ BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
 Create an empty INI writer.
 
 `return` the writer, or `NULL` on failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_writer()`.
@@ -176,9 +212,11 @@ Sections cannot be nested: the previous one must be closed with
 `bxr_ini_writer_section_end()` first.
 
 `ini` writer to use. Must not be `NULL`.
+
 `section` section name, written as is. Must not be `NULL`.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -194,6 +232,7 @@ Close the current section by writing an empty line.
 `ini` writer to use, with a section open. Must not be `NULL`.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -209,10 +248,13 @@ Write a `key="value"` line in the current section.
 The value is quoted and escaped.
 
 `ini` writer to use, with a section open. Must not be `NULL`.
+
 `key` key name, written as is. Must not be `NULL`.
+
 `value` string value. Must not be `NULL`.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -228,10 +270,13 @@ Write a `key=number` line in the current section.
 The number is formatted with `%g`, so only 6 significant digits are kept.
 
 `ini` writer to use, with a section open. Must not be `NULL`.
+
 `key` key name, written as is. Must not be `NULL`.
+
 `number` value to write.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -245,9 +290,11 @@ BXR_API bool
 Save the INI text written so far to a file.
 
 `ini` writer to read from. Must not be `NULL`.
+
 `path` path to write to. Must not be `NULL`.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -261,6 +308,7 @@ BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
 Get the INI text written so far.
 
 `ini` writer to read from. Must not be `NULL`.
+
 `length` receives the size of the data in bytes, without the null
 terminator. May be `NULL`.
 

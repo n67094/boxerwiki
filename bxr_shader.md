@@ -3,9 +3,9 @@ File `bxr_shader.h`.
 
 Copyright (c) 2026 nsix. All rights reserved.
 
-# GPU Shaders
+# Shaders
 
-GPU shaders loaded from bytecode files in the mounted asset directories.
+shaders loaded from bytecode files in the mounted asset directories.
 
 Shader files are read with the `bxr_asset.h` API and must be named
 `<name>.<stage>.<format>`, where:
@@ -23,12 +23,41 @@ Typical usage: create a vertex and a fragment shader with
 release them with `bxr_shader_destroy()`.
 
 <a name="line-undefined"></a>
+## Enums
+
+<a name="line-undefined"></a>
+Shader stage.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
+Handle to a GPU shader.
+
+```cpp
+typedef struct bxr_shader_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
 Shader creation parameters.
 
 `name` asset path without the format extension (e.g. "shaders/basic.vert").
 Must not be NULL.
+
 `entrypoint` name of the entry function in the bytecode (e.g. "main").
+
 `stage` must match the `<stage>` part of `name`.
+
 `num_*` number of resources of each kind used by the shader.
 
 ```cpp
@@ -39,32 +68,7 @@ typedef struct bxr_shader_desc_s
 
 
 <a name="line-undefined"></a>
-## Internal API
-
-<a name="line-undefined"></a>
-Initializes the shader system.
-
-`context` is the bxr context to use for shader operations.
-
-```cpp
-bool bxr_shader_setup(bxr_context_t *context)
-```
-
----
-
-
-<a name="line-undefined"></a>
-Shuts down the shader system.
-
-```cpp
-void bxr_shader_teardown(void)
-```
-
----
-
-
-<a name="line-undefined"></a>
-## Public API
+## API
 
 <a name="line-undefined"></a>
 Load a shader bytecode file and create a GPU shader from it.

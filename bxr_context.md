@@ -6,6 +6,25 @@ Copyright (c) 2026 nsix. All rights reserved.
 # Global Context
 
 <a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
+Global context of the application.
+
+Contains the configuration, the window, the GPU device and other global
+state.
+
+```cpp
+typedef struct bxr_context_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Get the global context and create it if it doesn't exist yet.
 
 `return` the global context, or `NULL` if the allocation failed.
@@ -51,9 +70,11 @@ BXR_API SDL_Window *bxr_context_get_window(void)
 Resize the window and store the new size in the configuration.
 
 `width` new width in window coordinates.
+
 `height` new height in window coordinates.
 
 return `true` if the window was resized successfully, `false` otherwise.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -81,6 +102,7 @@ Set the virtual resolution the game renders at.
 Takes effect on the next frame, the window itself is not resized.
 
 `width` virtual width in pixels.
+
 `height` virtual height in pixels.
 
 ```cpp
@@ -108,6 +130,7 @@ Switch the window between fullscreen and windowed mode.
 `fullscreen` `true` for fullscreen, `false` for windowed.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -135,6 +158,7 @@ Allow or forbid the user to resize the window.
 `resizable` `true` to allow resizing, `false` to forbid it.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp

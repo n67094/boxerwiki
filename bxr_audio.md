@@ -5,14 +5,38 @@ Copyright (c) 2026 nsix. All rights reserved.
 
 # Audio Management and Playback
 
-Typical usage: `bxr_audio_create()`, then `bxr_voice_create()` for as many
-voices as you need, then `bxr_voice_play()`, `bxr_voice_pause()`, etc.
-Once done, call `bxr_voice_destroy()` and `bxr_audio_destroy()` to free the
-resources.
+Typical usage:
 
-When `BXR_AUDIO_MAX_VOICES` voices are alive, creating a new one stops and
-destroys the oldest voice that was not created with `keep_alive` set. If
-every voice is kept alive, the creation fails instead.
+```
+_music = bxr_audio_create("path/to/music.ogg");
+
+bxr_voice_desc_t music_desc = {
+  .audio      = _music,
+  .volume     = 1.0f,
+  .auto_play  = true,
+  .play_once  = false,
+  .keep_alive = true,
+};
+
+_music_voice = bxr_voice_create(&music_desc);
+
+...
+
+ bxr_voice_destroy(_music_voice);
+ bxr_audio_destroy(_music);
+```
+
+When `BXR_AUDIO_MAX_VOICES` voices are alive creating a new one:
+
+- Stops and destroys the oldest voice that was not created with `keep_alive`
+set to `true`.
+- If every voice has `keep_alive` set to `true` the creation fails.
+
+Voices handle validity can be checked with `bxr_voice_is_valid()` to avoid
+using a destroyed voice.
+
+<a name="line-undefined"></a>
+## Structs
 
 <a name="line-undefined"></a>
 Handle to loaded audio data.
@@ -38,10 +62,14 @@ typedef struct bxr_voice_s
 Parameters for `bxr_voice_create()`.
 
 `audio` the audio to play; must be valid.
+
 `volume` initial volume, clamped to [0.0, 1.0].
+
 `auto_play` start playing immediately when true.
+
 `play_once` play a single time and then destroy the voice automatically;
 when false the voice loops.
+
 `keep_alive` never evict this voice when the voice limit is reached.
 
 ```cpp
@@ -52,7 +80,7 @@ typedef struct bxr_voice_desc_s
 
 
 <a name="line-undefined"></a>
-## Public API
+## API
 
 <a name="line-undefined"></a>
 Load a WAV or OGG file into memory.
@@ -62,6 +90,7 @@ The format is chosen from the file extension (`.wav` or `.ogg`).
 `path` file path relative to the mounted directories; must not be NULL.
 
 `return` the audio handle, or an id of `BXR_AUDIO_INVALID_ID` on failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the audio with `bxr_audio_destroy()`.
@@ -154,6 +183,7 @@ Create a voice that plays an audio.
 `return` the voice handle, or an id of `BXR_VOICE_INVALID_ID` if the audio
 is invalid, all `BXR_AUDIO_MAX_VOICES` voices are marked `keep_alive`, or
 the stream cannot be created.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the voice with `bxr_voice_destroy()`, unless
@@ -170,6 +200,7 @@ BXR_API bxr_voice_t bxr_voice_create(const bxr_voice_desc_t *desc)
 Set the volume of a voice.
 
 `voice` the voice to change.
+
 `volume` gain clamped to [0.0, 1.0].
 
 ```cpp
@@ -289,11 +320,13 @@ BXR_API Uint64 bxr_voice_get_position(bxr_voice_t voice)
 Seek a voice to a position.
 
 `voice` the voice to seek.
+
 `position_ms` target position in milliseconds; must be less than the audio
 length.
 
 `return` true on success, false if the position is out of range or the
 voice is invalid.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -307,9 +340,11 @@ BXR_API bool bxr_voice_set_position(bxr_voice_t voice, Uint64 position_ms)
 Set the playback speed of a voice, which also shifts its pitch.
 
 `voice` the voice to change.
+
 `pitch` frequency ratio clamped to [0.01, 100.0]; 1.0 is normal speed.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -343,6 +378,7 @@ with their own layout.
 `pan` balance clamped to [-1.0, 1.0]: -1.0 left, 0.0 center, 1.0 right.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 **NOTE:** Only mono and stereo sources can be panned.
@@ -405,6 +441,7 @@ Add a voice to a tag.
 
 `return` true on success or if the voice already has this tag, false on
 failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -418,6 +455,7 @@ BXR_API bool bxr_audio_tag_add(const char *tag_name, bxr_voice_t voice)
 Remove a voice from a tag.
 
 `tag_name` the tag; must not be NULL.
+
 `voice` the voice to untag.
 
 `return` true on success, false if the voice is invalid or was not in the
@@ -437,6 +475,7 @@ BXR_API bool bxr_audio_tag_remove(const char *tag_name, bxr_voice_t voice)
 Set the volume of every voice in a tag.
 
 `tag_name` the tag.
+
 `volume` gain clamped to [0.0, 1.0].
 
 ```cpp

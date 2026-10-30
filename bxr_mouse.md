@@ -5,8 +5,24 @@ Copyright (c) 2026 nsix. All rights reserved.
 
 # Mouse Input Handling
 
+The mouse position is tracked in the game's virtual resolution, and the mouse
+wheel scroll is tracked in the current frame.
+
 <a name="line-undefined"></a>
-## Public API
+## Enums
+
+<a name="line-undefined"></a>
+Mouse buttons.
+
+```cpp
+typedef enum
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
 
 <a name="line-undefined"></a>
 Get the position of the mouse cursor in the game's virtual resolution.

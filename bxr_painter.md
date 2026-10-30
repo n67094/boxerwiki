@@ -14,7 +14,7 @@ Default coordinate space: virtual resolution in pixels, origin at the
 top-left corner, y pointing down.
 
 <a name="line-undefined"></a>
-## Public API
+## Typedefs
 
 <a name="line-undefined"></a>
 A vertex with position, texture coordinates and color.
@@ -37,6 +37,9 @@ typedef struct bxr_textured_rect_s
 
 
 <a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Constructs a `bxr_textured_rect_t` compound literal from the `dst`
 destination region (in the current coordinate space) and the `src` region
 in the texture.
@@ -52,6 +55,7 @@ in the texture.
 Set the coordinate space boundaries mapped onto the current viewport.
 
 `left` and `right` the x coordinates of the left and right edges.
+
 `bottom` and `top` the y coordinates of the bottom and top edges.
 
 ```cpp
@@ -136,6 +140,7 @@ Rotate the coordinate space of subsequent draws around a point.
 
 `angle` the angle in radians. Positive is clockwise on screen with the
 default y-down projection.
+
 `ax` and `ay` the pivot, in current coordinates.
 
 ```cpp
@@ -161,6 +166,7 @@ BXR_API void bxr_painter_scale(float sx, float sy)
 Scale the coordinate space of subsequent draws around a point.
 
 `sx` and `sy` the scale factors along each axis. Negative values mirror.
+
 `ax` and `ay` the pivot, in current coordinates.
 
 ```cpp
@@ -200,8 +206,11 @@ The data is copied. `vs_size + fs_size` must not exceed
 `BXR_PAINTER_MAX_UNIFORM_FLOATS * sizeof(float)` bytes (asserted).
 
 `vs_data` vertex stage data. May be NULL only if `vs_size` is 0.
+
 `vs_size` size of `vs_data` in bytes.
+
 `fs_data` fragment stage data. May be NULL only if `fs_size` is 0.
+
 `fs_size` size of `fs_data` in bytes.
 
 ```cpp
@@ -277,6 +286,7 @@ BXR_API void bxr_painter_reset_color(void)
 Bind an image to a texture channel for subsequent draws.
 
 `channel` the texture channel, in `[0, BXR_PAINTER_MAX_TEXTURE_SLOTS)`.
+
 `image` the image to bind. Ownership stays with the caller.
 
 ```cpp
@@ -318,6 +328,7 @@ BXR_API void bxr_painter_reset_image(int channel)
 Bind a sampler to a texture channel for subsequent draws.
 
 `channel` the texture channel, in `[0, BXR_PAINTER_MAX_TEXTURE_SLOTS)`.
+
 `sampler` the sampler to bind. Ownership stays with the caller.
 
 ```cpp
@@ -358,6 +369,7 @@ Coordinates are in virtual-resolution pixels, relative to the viewport, and
 ignore the projection and transform.
 
 `x` and `y` the top-left corner.
+
 `w` and `h` the size.
 
 ```cpp
@@ -405,7 +417,9 @@ BXR_API void bxr_painter_clear(void)
 Draw raw vertices as the given primitive.
 
 `primitive_type` how vertices are assembled.
+
 `vertices` the vertex array. Must not be NULL if `vertices_count` > 0.
+
 `vertices_count` number of elements in `vertices`.
 
 ```cpp
@@ -419,6 +433,7 @@ BXR_API void bxr_painter_draw(bxr_primitive_e primitive_type,
 Draw points with the current color.
 
 `points` the point array. Must not be NULL if `count` > 0.
+
 `count` number of points.
 
 ```cpp
@@ -442,6 +457,7 @@ BXR_API void bxr_painter_draw_point(bxr_vec2_t point)
 Draw independent line segments with the current color.
 
 `lines` the segment array. Must not be NULL if `count` > 0.
+
 `count` number of segments.
 
 ```cpp
@@ -465,6 +481,7 @@ BXR_API void bxr_painter_draw_line(bxr_line_t line)
 Draw a polyline joining consecutive points with the current color.
 
 `points` the point array. Must not be NULL if `count` > 0.
+
 `count` number of points
 
 ```cpp
@@ -478,6 +495,7 @@ BXR_API void bxr_painter_draw_lines_strip(const bxr_vec2_t *points,
 Draw filled triangles with the current color.
 
 `triangles` the triangle array. Must not be NULL if `count` > 0.
+
 `count` number of triangles.
 
 ```cpp
@@ -501,6 +519,7 @@ BXR_API void bxr_painter_draw_filled_triangle(bxr_triangle_t triangle)
 Draw a filled triangle strip with the current color.
 
 `points` the strip vertices. Must not be NULL if `count` > 0.
+
 `count` number of points.
 
 ```cpp
@@ -514,6 +533,7 @@ BXR_API void bxr_painter_draw_filled_triangles_strip(const bxr_vec2_t *points,
 Draw filled rectangles with the current color.
 
 `rects` the rectangle array. Must not be NULL if `count` > 0.
+
 `count` number of rectangles.
 
 ```cpp
@@ -539,7 +559,9 @@ current color.
 
 `channel` the texture channel, in `[0, BXR_PAINTER_MAX_TEXTURE_SLOTS)`; an
 image must be bound to it.
+
 `rects` the rectangle array. Must not be NULL if `count` > 0.
+
 `count` number of rectangles.
 
 ```cpp
@@ -555,6 +577,7 @@ by the current color.
 
 `channel` the texture channel, in `[0, BXR_PAINTER_MAX_TEXTURE_SLOTS)`; an
 image must be bound to it.
+
 `rect` the rectangle to draw.
 
 ```cpp

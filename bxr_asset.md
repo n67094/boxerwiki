@@ -29,9 +29,8 @@ Supported archive types by PhysicsFS:
 - .POD (Terminal Velocity POD archives)
 - .DAT (Resident Evil 3 rofs.dat archives)
 
-
 <a name="line-undefined"></a>
-## Public API
+## API
 
 <a name="line-undefined"></a>
 Add a directory or archive to the end of the read search path.
@@ -97,6 +96,7 @@ file name (`a.tar.gz` has `.gz`). A file name starting with a dot and no
 other dot (`.hidden`) has no extension.
 
 `path` path to check. Must not be NULL.
+
 `extension` extension including the leading dot (e.g. ".png"). Must not be
 NULL.
 
@@ -130,11 +130,13 @@ The returned buffer is not NUL-terminated; do not use it as a C string
 without copying it.
 
 `path` virtual path of the file to read. Must not be NULL.
+
 `length` receives the size of the returned data in bytes. May be NULL. Left
 untouched on failure.
 
 `return` the file contents, or NULL if the file does not exist, is empty, or
 cannot be read.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `BXR_FREE()`.
@@ -162,11 +164,15 @@ hides any mounted file with the same path.
 
 `path` virtual path of the file, relative to the write directory. Must not be
 NULL.
+
 `data` bytes to write. Must not be NULL.
+
 `length` number of bytes to write. Must be greater than 0.
+
 `append` true to append to the end of the file, false to truncate it first.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp
@@ -186,6 +192,7 @@ directories and archives are never modified.
 NULL.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ```cpp

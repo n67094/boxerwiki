@@ -11,7 +11,20 @@ Images are handles (`bxr_image_t`) created from asset files mounted with the
 invalid.
 
 <a name="line-undefined"></a>
-## Public API
+## Typedefs
+
+<a name="line-undefined"></a>
+Handle to an image.
+
+```cpp
+typedef struct bxr_image_s
+```
+
+---
+
+
+<a name="line-undefined"></a>
+## API
 
 <a name="line-undefined"></a>
 Load a PNG image from a mounted asset file.
@@ -22,6 +35,7 @@ The pixels are converted to the swapchain format and uploaded to the GPU.
 `NULL` and must end with `.png` or `.bmp`.
 
 `return` the image, or an image with id `BXR_IMAGE_INVALID_ID` on failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must destroy the result with `bxr_image_destroy()`.
@@ -40,14 +54,19 @@ The pixels are copied, converted to the swapchain format if needed, and
 uploaded to the GPU.
 
 `width` width in pixels.
+
 `height` height in pixels.
+
 `format` pixel format of `pixels` (e.g. `BXR_PIXEL_FORMAT_RGBA32`).
+
 `pixels` pixel data, at least `pitch * height` bytes. Remains owned by the
 caller and may be freed once the call returns.
+
 `pitch` bytes per row, or 0 to compute it as `width` times the format's
 bytes per pixel.
 
 `return` the image, or an image with id `BXR_IMAGE_INVALID_ID` on failure.
+
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must destroy the result with `bxr_image_destroy()`.

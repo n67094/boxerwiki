@@ -6,6 +6,9 @@ Copyright (c) 2026 nsix. All rights reserved.
 # Game Lifecycle
 
 <a name="line-undefined"></a>
+## Typedefs
+
+<a name="line-undefined"></a>
 Boxer configuration.
 
 `name` application name, also used to build the save directory
@@ -30,6 +33,9 @@ typedef struct bxr_game_config_s
 
 ---
 
+
+<a name="line-undefined"></a>
+## API
 
 <a name="line-undefined"></a>
 Provide the game configuration, implemented by the user.

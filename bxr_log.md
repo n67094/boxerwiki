@@ -18,7 +18,7 @@ Optionally enable ANSI terminal colors:
   bxr_log_enable_colors(true);
 
 <a name="line-undefined"></a>
-## Public API
+## Enums
 
 <a name="line-undefined"></a>
 Log priority levels.
@@ -31,9 +31,13 @@ typedef enum
 
 
 <a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Log a printf-style message at the given priority.
 
 `priority` level of the message, in `[0, BXR_LOG_PRIORITY_SIZE)`.
+
 `fmt` printf-style format string, followed by its arguments; must not be
 NULL.
 

@@ -3,7 +3,7 @@ File `bxr_sdl_gp.h`.
 
 Copyright (c) 2026 nsix. All rights reserved.
 
-# SDL_gp Include
+# SDL_gp Configuration
 
 Includes SDL_gp configured with boxer limits from `bxr_config.h`.
 

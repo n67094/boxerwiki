@@ -8,6 +8,9 @@ Copyright (c) 2025 nsix. All rights reserved.
 Memory allocation and memory manipulation utilities.
 
 <a name="line-undefined"></a>
+## Macros
+
+<a name="line-undefined"></a>
 Allocate uninitialized memory.
 
 `nbytes` size of the block in bytes.
@@ -27,6 +30,7 @@ Allocate uninitialized memory.
 Allocate zero-initialized memory for an array.
 
 `count` number of elements.
+
 `nbytes` size of one element in bytes.
 
 `return` the new pointer, or NULL on failure.
@@ -89,6 +93,7 @@ allowed.
 Resize a block of memory.
 
 `ptr` pointer to the block to resize, NULL behaves like `BXR_ALLOC()`.
+
 `nbytes` new size of the block in bytes.
 
 `return` the new pointer, or NULL on failure.
