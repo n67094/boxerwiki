@@ -1,0 +1,22 @@
+# Notify nsix.blog that the docs changed, so it updates its boxerwiki
+# submodule.
+#
+# Requires the BLOG_DISPATCH_TOKEN secret: a fine-grained token with
+# "Contents: read and write" on n67094/nsix.blog (needed by repository_dispatch).
+
+name: notify-blog
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send repository_dispatch to nsix.blog
+        run: gh api repos/n67094/nsix.blog/dispatches -f event_type=boxerwiki-updated
+        env:
+          GH_TOKEN: ${{ secrets.BLOG_DISPATCH_TOKEN }}
