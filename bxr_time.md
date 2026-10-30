@@ -22,7 +22,7 @@ Call a callback function after a delay, repeatedly if it asks to.
 
 Callback signature:
 
-```c
+```cpp
 Uint32 callback(void *udata, bxr_timer_t timer_id, Uint32 interval);
 ```
 

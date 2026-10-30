@@ -9,6 +9,9 @@ Boxer owns the program entry point through SDL main callbacks: do
 not write a `main()`, implement the callbacks of `bxr_game.h` instead.
 
 <a name="line-undefined"></a>
+## API
+
+<a name="line-undefined"></a>
 Request the application to exit.
 
 Asynchronous: pushes an `SDL_EVENT_QUIT` and returns immediately. The
