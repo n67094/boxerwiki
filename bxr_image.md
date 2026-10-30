@@ -14,11 +14,6 @@ invalid.
 ## Public API
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bxr_image_t bxr_image_create(const char *path)
-```
-
 Load a PNG image from a mounted asset file.
 
 The pixels are converted to the swapchain format and uploaded to the GPU.
@@ -30,15 +25,15 @@ The pixels are converted to the swapchain format and uploaded to the GPU.
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must destroy the result with `bxr_image_destroy()`.
+
+```cpp
+BXR_API bxr_image_t bxr_image_create(const char *path)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bxr_image_t bxr_image_create_mem(
-```
-
 Create an image from raw pixels in memory.
 
 The pixels are copied, converted to the swapchain format if needed, and
@@ -56,60 +51,65 @@ bytes per pixel.
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must destroy the result with `bxr_image_destroy()`.
+
+```cpp
+BXR_API bxr_image_t bxr_image_create_mem(
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API int bxr_image_get_width(bxr_image_t image)
-```
-
 Get the width of an image.
 
 `image` image to query.
 
 `return` the width in pixels, or 0 if the image id is `BXR_IMAGE_INVALID_ID`.
+
+```cpp
+BXR_API int bxr_image_get_width(bxr_image_t image)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API int bxr_image_get_height(bxr_image_t image)
-```
-
 Get the height of an image.
 
 `image` image to query.
 
 `return` the height in pixels, or 0 if the image id is
 `BXR_IMAGE_INVALID_ID`.
+
+```cpp
+BXR_API int bxr_image_get_height(bxr_image_t image)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_image_is_valid(bxr_image_t image)
-```
-
 Check if an image handle is valid.
 
 `image` image to check.
 
 `return` true if the image id is not `BXR_IMAGE_INVALID_ID`, false otherwise.
+
+```cpp
+BXR_API bool bxr_image_is_valid(bxr_image_t image)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
+Destroy an image and release its GPU texture.
+
+`image` image to destroy.
 
 ```cpp
 BXR_API void bxr_image_destroy(bxr_image_t image)
 ```
 
-Destroy an image and release its GPU texture.
-
-`image` image to destroy.
 ---
 

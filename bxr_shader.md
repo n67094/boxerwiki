@@ -23,11 +23,6 @@ Typical usage: create a vertex and a fragment shader with
 release them with `bxr_shader_destroy()`.
 
 <a name="line-undefined"></a>
-
-```cpp
-typedef struct bxr_shader_desc_s
-```
-
 Shader creation parameters.
 
 `name` asset path without the format extension (e.g. "shaders/basic.vert").
@@ -35,6 +30,11 @@ Must not be NULL.
 `entrypoint` name of the entry function in the bytecode (e.g. "main").
 `stage` must match the `<stage>` part of `name`.
 `num_*` number of resources of each kind used by the shader.
+
+```cpp
+typedef struct bxr_shader_desc_s
+```
+
 ---
 
 
@@ -42,24 +42,24 @@ Must not be NULL.
 ## Internal API
 
 <a name="line-undefined"></a>
+Initializes the shader system.
+
+`context` is the bxr context to use for shader operations.
 
 ```cpp
 bool bxr_shader_setup(bxr_context_t *context)
 ```
 
-Initializes the shader system.
-
-`context` is the bxr context to use for shader operations.
 ---
 
 
 <a name="line-undefined"></a>
+Shuts down the shader system.
 
 ```cpp
 void bxr_shader_teardown(void)
 ```
 
-Shuts down the shader system.
 ---
 
 
@@ -67,11 +67,6 @@ Shuts down the shader system.
 ## Public API
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bxr_shader_t bxr_shader_create(const bxr_shader_desc_t *desc)
-```
-
 Load a shader bytecode file and create a GPU shader from it.
 
 `desc` the shader description. Must not be NULL.
@@ -82,15 +77,15 @@ Call `bxr_get_error()` for more information.
 
 **Note**: the caller owns the shader and must release it with
 `bxr_shader_destroy()`.
+
+```cpp
+BXR_API bxr_shader_t bxr_shader_create(const bxr_shader_desc_t *desc)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API SDL_GPUShader *bxr_shader_get_sdl(bxr_shader_t shader)
-```
-
 Get the underlying SDL GPU shader.
 
 `shader` a shader from `bxr_shader_create()`.
@@ -99,34 +94,39 @@ Get the underlying SDL GPU shader.
 
 **Note**: the returned pointer is owned by boxer and stays valid until
 `bxr_shader_destroy()` is called on `shader`.
+
+```cpp
+BXR_API SDL_GPUShader *bxr_shader_get_sdl(bxr_shader_t shader)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_shader_is_valid(bxr_shader_t shader)
-```
-
 Check if a shader handle is valid.
 
 `shader` a shader from `bxr_shader_create()`.
 
 `return` true if the shader is valid, false otherwise.
+
+```cpp
+BXR_API bool bxr_shader_is_valid(bxr_shader_t shader)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API void bxr_shader_destroy(bxr_shader_t shader)
-```
-
 Destroy a shader and release its GPU resources.
 
 Invalid or already destroyed shaders are ignored.
 
 `shader` a shader from `bxr_shader_create()`. Pipelines already created from
 it remain valid.
+
+```cpp
+BXR_API void bxr_shader_destroy(bxr_shader_t shader)
+```
+
 ---
 

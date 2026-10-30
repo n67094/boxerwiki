@@ -6,25 +6,20 @@ Copyright (c) 2026 nsix. All rights reserved.
 # String Utilities
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_INLINE char *
-```
-
 Trim leading and trailing whitespace from the given string.
 
 `str` is the string to trim. The string is modified in-place.
 
 `return` the trimmed string, or NULL if the input string is NULL.
+
+```cpp
+BXR_INLINE char *
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_INLINE size_t
-```
-
 Get the length of the initial segment of `str` which consists entirely of
 characters not in `reject`.
 
@@ -34,5 +29,10 @@ characters not in `reject`.
 
 `return` the length of the initial segment of `str` which consists entirely
 of characters not in `reject`.
+
+```cpp
+BXR_INLINE size_t
+```
+
 ---
 

@@ -34,11 +34,6 @@ Supported archive types by PhysicsFS:
 ## Public API
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_mount(const char *path)
-```
-
 Add a directory or archive to the end of the read search path.
 
 Its content is mounted at the root of the virtual file system and merged with
@@ -52,30 +47,30 @@ not be NULL.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
+
+```cpp
+BXR_API bool bxr_asset_mount(const char *path)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_unmount(const char *path)
-```
-
 Remove a directory or archive from the read search path.
 
 `path` directory or archive to unmount, exactly as given to
 `bxr_asset_mount()`. Must not be NULL.
 
 `return` true on success, false if it was not mounted or is still in use.
+
+```cpp
+BXR_API bool bxr_asset_unmount(const char *path)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_exists(const char *path)
-```
-
 Check if a file or directory exists in the virtual file system.
 
 Searches the write directory and every mounted directory and archive.
@@ -83,15 +78,15 @@ Searches the write directory and every mounted directory and archive.
 `path` virtual path to check. Must not be NULL.
 
 `return` true if it exists, false otherwise.
+
+```cpp
+BXR_API bool bxr_asset_exists(const char *path)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_has_extension(const char *path, const char *extension)
-```
-
 Check if a path ends with the given extension.
 
 Pure string check, the file does not need to exist and the asset subsystem
@@ -106,29 +101,29 @@ other dot (`.hidden`) has no extension.
 NULL.
 
 `return` true if the extension matches, false otherwise.
+
+```cpp
+BXR_API bool bxr_asset_has_extension(const char *path, const char *extension)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_is_directory(const char *path)
-```
-
 Check if a path in the virtual file system is a directory.
 
 `path` virtual path to check. Must not be NULL.
 
 `return` true if it is a directory, false if it is not or does not exist.
+
+```cpp
+BXR_API bool bxr_asset_is_directory(const char *path)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API Uint8 *bxr_asset_read(const char *path, size_t *length)
-```
-
 Read a whole file from the virtual file system into memory.
 
 The returned buffer is not NUL-terminated; do not use it as a C string
@@ -143,15 +138,15 @@ cannot be read.
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `BXR_FREE()`.
+
+```cpp
+BXR_API Uint8 *bxr_asset_read(const char *path, size_t *length)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool
-```
-
 Write data to a file in the write directory.
 
 The write directory is the platform user data directory:
@@ -173,15 +168,15 @@ NULL.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
+
+```cpp
+BXR_API bool
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-BXR_API bool bxr_asset_delete(const char *path)
-```
-
 Delete a file or an empty directory from the write directory.
 
 See `bxr_asset_write()` for the write directory location. Mounted
@@ -192,5 +187,10 @@ NULL.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
+
+```cpp
+BXR_API bool bxr_asset_delete(const char *path)
+```
+
 ---
 

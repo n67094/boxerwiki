@@ -20,11 +20,6 @@ Typical usage: create the set, insert / remove / check handles, iterate the
 dense array, destroy the set.
 
 <a name="line-undefined"></a>
-
-```cpp
-bxr_sparse_set_t *bxr_sparse_set_create(size_t default_capacity)
-```
-
 Create an empty sparse set.
 
 The set grows automatically when a handle `>=` the capacity is inserted.
@@ -36,27 +31,27 @@ be inserted without resizing. Must be greater than 0.
 failed.
 
 **Note**: the caller must free the result with `bxr_sparse_set_destroy()`.
+
+```cpp
+bxr_sparse_set_t *bxr_sparse_set_create(size_t default_capacity)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
+Destroy a sparse set and free its memory.
+
+`set` the set to destroy, may be NULL.
 
 ```cpp
 void bxr_sparse_set_destroy(bxr_sparse_set_t *set)
 ```
 
-Destroy a sparse set and free its memory.
-
-`set` the set to destroy, may be NULL.
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-bool bxr_sparse_set_insert(bxr_sparse_set_t *set, size_t handle)
-```
-
 Insert a handle into the set.
 
 `set` the set. Must not be NULL.
@@ -64,30 +59,30 @@ Insert a handle into the set.
 
 `return` true on success, false if the handle is already in the set or if
 resizing failed.
+
+```cpp
+bool bxr_sparse_set_insert(bxr_sparse_set_t *set, size_t handle)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-bool bxr_sparse_set_remove(bxr_sparse_set_t *set, size_t handle)
-```
-
 Remove a handle from the set.
 
 `set` the set. Must not be NULL.
 `handle` the handle to remove.
 
 `return` true on success, false if the handle is not in the set.
+
+```cpp
+bool bxr_sparse_set_remove(bxr_sparse_set_t *set, size_t handle)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-bool bxr_sparse_set_contains(const bxr_sparse_set_t *set,
-```
-
 Check whether a handle is in the set.
 
 `set` the set. Must not be NULL.
@@ -96,59 +91,59 @@ Check whether a handle is in the set.
 array, or `SIZE_MAX` if the handle is not in the set.
 
 `return` true if the handle is in the set, false otherwise.
+
+```cpp
+bool bxr_sparse_set_contains(const bxr_sparse_set_t *set,
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-size_t bxr_sparse_set_capacity(const bxr_sparse_set_t *set)
-```
-
 Get the capacity of the set.
 
 `set` the set. Must not be NULL.
 
 `return` the capacity, handles in `[0, capacity)` can be inserted without
 resizing.
+
+```cpp
+size_t bxr_sparse_set_capacity(const bxr_sparse_set_t *set)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-size_t bxr_sparse_set_count(const bxr_sparse_set_t *set)
-```
-
 Get the number of handles in the set.
 
 `set` the set. Must not be NULL.
 
 `return` the number of handles, also the number of valid entries in the
 dense array.
+
+```cpp
+size_t bxr_sparse_set_count(const bxr_sparse_set_t *set)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-void bxr_sparse_set_clear(bxr_sparse_set_t *set)
-```
-
 Remove all handles from the set.
 
 The capacity and allocated memory are kept for future insertions.
 
 `set` the set. Must not be NULL.
+
+```cpp
+void bxr_sparse_set_clear(bxr_sparse_set_t *set)
+```
+
 ---
 
 
 <a name="line-undefined"></a>
-
-```cpp
-const size_t *bxr_sparse_set_get_dense(const bxr_sparse_set_t *set)
-```
-
 Get the dense array of the set, to iterate over its handles.
 
 Only the first `bxr_sparse_set_count()` entries are valid. The order is
@@ -160,5 +155,10 @@ unspecified and can changes.
 
 **Note**: the pointer is invalidated by `bxr_sparse_set_insert()` (the array
 may be reallocated) and `bxr_sparse_set_destroy()`. Do not free it.
+
+```cpp
+const size_t *bxr_sparse_set_get_dense(const bxr_sparse_set_t *set)
+```
+
 ---
 
