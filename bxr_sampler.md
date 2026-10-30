@@ -1,23 +1,23 @@
 <a name="line-undefined"></a>
 File `bxr_sampler.h`.
 
-# GPU Samplers.
+Copyright (c) 2026 nsix. All rights reserved.
+
+# GPU Samplers
 
 GPU samplers used to sample textures in shaders.
 
 Create a sampler from one of the `bxr_sampler_e` presets, bind it with
 `bxr_painter_set_sampler()`, and release it with `bxr_sampler_destroy()`.
 
-Copyright (c) 2026 nsix. All rights reserved.
-
 <a name="line-undefined"></a>
-Sampler presets: filtering (point = nearest, linear) and address mode
-(clamp to edge, wrap = repeat) applied on all axes.
 
 ```cpp
 typedef enum
 ```
 
+Sampler presets: filtering (point = nearest, linear) and address mode
+(clamp to edge, wrap = repeat) applied on all axes.
 ---
 
 
@@ -25,22 +25,22 @@ typedef enum
 ## Internal API
 
 <a name="line-undefined"></a>
-Initializes the sampler system.
 
 ```cpp
 bool bxr_sampler_setup(void)
 ```
 
+Initializes the sampler system.
 ---
 
 
 <a name="line-undefined"></a>
-Tears down the sampler system.
 
 ```cpp
 void bxr_sampler_teardown(void)
 ```
 
+Tears down the sampler system.
 ---
 
 
@@ -48,6 +48,11 @@ void bxr_sampler_teardown(void)
 ## Public API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_sampler_t bxr_sampler_create(bxr_sampler_e sampler_type)
+```
+
 Create a GPU sampler from a preset.
 
 `sampler_type` the preset to use.
@@ -58,22 +63,17 @@ Call `bxr_get_error()` for more information.
 
 **Note**: the caller owns the sampler and must release it with
 `bxr_sampler_destroy()` while the GPU device is still alive.
-
-```cpp
-BXR_API bxr_sampler_t bxr_sampler_create(bxr_sampler_e sampler_type)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a GPU sampler and release its GPU resources.
-
-`sampler` the sampler to destroy.
 
 ```cpp
 BXR_API void bxr_sampler_destroy(bxr_sampler_t *sampler)
 ```
 
+Destroy a GPU sampler and release its GPU resources.
+
+`sampler` the sampler to destroy.
 ---
 

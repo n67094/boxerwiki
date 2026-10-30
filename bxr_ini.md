@@ -1,7 +1,9 @@
 <a name="line-undefined"></a>
 File `bxr_ini.h`.
 
-# INI Reader and Writer.
+Copyright (c) 2026 nsix. All rights reserved.
+
+# INI Reader and Writer
 
 Supported types:
 
@@ -27,12 +29,15 @@ name="nsix\ttest" ; Please note that the name contains a tab character
 test= ; this will be ignored
 ```
 
-Copyright (c) 2026 nsix. All rights reserved.
-
 <a name="line-undefined"></a>
 ## Reader API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data,
+```
+
 Parse INI data and return a reader for it.
 
 Malformed lines are skipped silently, so parsing itself never fails.
@@ -45,29 +50,29 @@ freed once the call returns.
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_reader()`.
-
-```cpp
-BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data,
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a reader and free its resources.
-
-`ini` reader to destroy.
-
-**NOTE:** String returned by the `bxr_ini_read_*()` functions become invalid.
 
 ```cpp
 BXR_API void bxr_ini_destroy_reader(bxr_ini_reader_t *ini)
 ```
 
+Destroy a reader and free its resources.
+
+`ini` reader to destroy.
+
+**NOTE:** String returned by the `bxr_ini_read_*()` functions become invalid.
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *
+```
+
 Get the string value of a key.
 
 If the key appears several times in the section, the first one wins.
@@ -80,15 +85,15 @@ If the key appears several times in the section, the first one wins.
 
 **Note**: the result is owned by the reader and stays valid until
 `bxr_ini_destroy_reader()`.
-
-```cpp
-BXR_API const char *
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
+```
+
 Get the value of a key parsed as a number.
 
 `ini` reader to query. Must not be `NULL`.
@@ -96,15 +101,15 @@ Get the value of a key parsed as a number.
 `key` key name, case-insensitive. Must not be `NULL`.
 
 `return` the parsed value, or `0.0f` if not found.
-
-```cpp
-BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
+```
+
 Get the string value of a key, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
@@ -114,15 +119,15 @@ Get the string value of a key, or a fallback if it is missing.
 
 `return` the value (owned by the reader, see `bxr_ini_read_str()`), or
 `default_value` if not found.
-
-```cpp
-BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
+```
+
 Get the value of a key parsed as a number, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
@@ -131,11 +136,6 @@ Get the value of a key parsed as a number, or a fallback if it is missing.
 `default_value` returned when the key is not found.
 
 `return` the parsed value, or `default_value` if not found.
-
-```cpp
-BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
-```
-
 ---
 
 
@@ -143,33 +143,38 @@ BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
 ## Writer API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_ini_writer_t *bxr_ini_create_writer(void)
+```
+
 Create an empty INI writer.
 
 `return` the writer, or `NULL` on failure.
 Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_writer()`.
-
-```cpp
-BXR_API bxr_ini_writer_t *bxr_ini_create_writer(void)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a writer and free its resources.
-
-`ini` writer to destroy. `NULL` is allowed and does nothing.
 
 ```cpp
 BXR_API void bxr_ini_destroy_writer(bxr_ini_writer_t *ini)
 ```
 
+Destroy a writer and free its resources.
+
+`ini` writer to destroy. `NULL` is allowed and does nothing.
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini,
+```
+
 Start a section by writing its `[section]` header.
 
 Sections cannot be nested: the previous one must be closed with
@@ -180,30 +185,30 @@ Sections cannot be nested: the previous one must be closed with
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
-
-```cpp
-BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini,
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_section_end(bxr_ini_writer_t *ini)
+```
+
 Close the current section by writing an empty line.
 
 `ini` writer to use, with a section open. Must not be `NULL`.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
-
-```cpp
-BXR_API bool bxr_ini_writer_section_end(bxr_ini_writer_t *ini)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool
+```
+
 Write a `key="value"` line in the current section.
 
 The value is quoted and escaped.
@@ -214,15 +219,15 @@ The value is quoted and escaped.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
+---
+
+
+<a name="line-undefined"></a>
 
 ```cpp
 BXR_API bool
 ```
 
----
-
-
-<a name="line-undefined"></a>
 Write a `key=number` line in the current section.
 
 The number is formatted with `%g`, so only 6 significant digits are kept.
@@ -233,15 +238,15 @@ The number is formatted with `%g`, so only 6 significant digits are kept.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
-
-```cpp
-BXR_API bool
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
+```
+
 Save the INI text written so far to a file.
 
 `ini` writer to read from. Must not be `NULL`.
@@ -249,15 +254,15 @@ Save the INI text written so far to a file.
 
 `return` true on success, false on failure.
 Call `bxr_get_error()` for more information.
-
-```cpp
-BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini,
+```
+
 Get the INI text written so far.
 
 `ini` writer to read from. Must not be `NULL`.
@@ -268,10 +273,5 @@ terminator. May be `NULL`.
 
 **Note**: the result is owned by the writer. Do not modify or free it; it
 becomes invalid after the next write or `bxr_ini_destroy_writer()`.
-
-```cpp
-BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini,
-```
-
 ---
 

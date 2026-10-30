@@ -1,7 +1,9 @@
 <a name="line-undefined"></a>
 File `bxr_log.h`.
 
-# Logging Utilities.
+Copyright (c) 2026 nsix. All rights reserved.
+
+# Logging Utilities
 
 The default minimum priority is `BXR_LOG_PRIORITY_DEBUG`, so every level is
 shown until `bxr_log_set_priority()` is called.
@@ -15,105 +17,103 @@ Optionally enable ANSI terminal colors:
 
   bxr_log_enable_colors(true);
 
-Copyright (c) 2026 nsix. All rights reserved.
-
 <a name="line-undefined"></a>
 ## Public API
 
 <a name="line-undefined"></a>
-Log priority levels.
 
 ```cpp
 typedef enum
 ```
 
+Log priority levels.
 ---
 
 
 <a name="line-undefined"></a>
-Log a printf-style message at the given priority.
-
-`priority` level of the message, in `[0, BXR_LOG_PRIORITY_SIZE)`.
-`fmt` printf-style format string, followed by its arguments; must not be
-NULL.
 
 ```cpp
 BXR_API void bxr_log(bxr_log_priority_e priority, const char *fmt, ...)
 ```
 
+Log a printf-style message at the given priority.
+
+`priority` level of the message, in `[0, BXR_LOG_PRIORITY_SIZE)`.
+`fmt` printf-style format string, followed by its arguments; must not be
+NULL.
 ---
 
 
 <a name="line-undefined"></a>
-Set the minimum priority; less severe messages are dropped.
-
-Severity  order: DEBUG < INFO < WARN < ERROR.
-
-`priority` minimum level, in `[0, BXR_LOG_PRIORITY_SIZE)`.
 
 ```cpp
 BXR_API void bxr_log_set_priority(bxr_log_priority_e priority)
 ```
 
+Set the minimum priority; less severe messages are dropped.
+
+Severity  order: DEBUG < INFO < WARN < ERROR.
+
+`priority` minimum level, in `[0, BXR_LOG_PRIORITY_SIZE)`.
 ---
 
 
 <a name="line-undefined"></a>
-Enable or disable ANSI terminal colors for log messages.
-
-`enabled` true to enable colors, false to disable.
 
 ```cpp
 BXR_API void bxr_log_enable_colors(bool enabled)
 ```
 
+Enable or disable ANSI terminal colors for log messages.
+
+`enabled` true to enable colors, false to disable.
 ---
 
 
 <a name="line-undefined"></a>
-Log a printf-style message at `BXR_LOG_PRIORITY_ERROR`.
-
-`...` printf-style format string followed by its arguments.
 
 ```cpp
 #define BXR_LOG_ERROR(...) bxr_log(BXR_LOG_PRIORITY_ERROR, __VA_ARGS__)
 ```
 
+Log a printf-style message at `BXR_LOG_PRIORITY_ERROR`.
+
+`...` printf-style format string followed by its arguments.
 ---
 
 
 <a name="line-undefined"></a>
-Log a printf-style message at `BXR_LOG_PRIORITY_WARN`.
-
-`...` printf-style format string followed by its arguments.
 
 ```cpp
 #define BXR_LOG_WARN(...) bxr_log(BXR_LOG_PRIORITY_WARN, __VA_ARGS__)
 ```
 
+Log a printf-style message at `BXR_LOG_PRIORITY_WARN`.
+
+`...` printf-style format string followed by its arguments.
 ---
 
 
 <a name="line-undefined"></a>
-Log a printf-style message at `BXR_LOG_PRIORITY_DEBUG`.
-
-`...` printf-style format string followed by its arguments.
 
 ```cpp
 #define BXR_LOG_DEBUG(...) bxr_log(BXR_LOG_PRIORITY_DEBUG, __VA_ARGS__)
 ```
 
+Log a printf-style message at `BXR_LOG_PRIORITY_DEBUG`.
+
+`...` printf-style format string followed by its arguments.
 ---
 
 
 <a name="line-undefined"></a>
-Log a printf-style message at `BXR_LOG_PRIORITY_INFO`.
-
-`...` printf-style format string followed by its arguments.
 
 ```cpp
 #define BXR_LOG_INFO(...) bxr_log(BXR_LOG_PRIORITY_INFO, __VA_ARGS__)
 ```
 
+Log a printf-style message at `BXR_LOG_PRIORITY_INFO`.
+
+`...` printf-style format string followed by its arguments.
 ---
 
