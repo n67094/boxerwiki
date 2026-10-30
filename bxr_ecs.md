@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_ecs.h`.
 
-# Boxer's Entity Component System.
+# Entity Component System.
 
 Overview:
 

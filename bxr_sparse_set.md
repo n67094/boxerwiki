@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_sparse_set.h`.
 
-# Boxer's Sparse Set.
+# Sparse Set.
 
 Set of integer handles (e.g. entity ids) with O(1) insert, remove and lookup.
 

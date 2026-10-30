@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_config.h`.
 
-# Boxer's Configuration.
+# Configuration.
 
 Copyright (c) 2025 nsix. All rights reserved.
 

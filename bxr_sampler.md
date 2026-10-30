@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_sampler.h`.
 
-# Boxer's GPU Samplers.
+# GPU Samplers.
 
 GPU samplers used to sample textures in shaders.
 

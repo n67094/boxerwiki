@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_context.h`.
 
-# Boxer's Global Context.
+# Global Context.
 
 Copyright (c) 2026 nsix. All rights reserved.
 

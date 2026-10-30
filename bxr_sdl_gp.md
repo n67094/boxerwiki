@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_sdl_gp.h`.
 
-# Boxer's SDL_gp Include.
+# SDL_gp Include.
 
 Includes SDL_gp configured with boxer limits from `bxr_config.h`.
 

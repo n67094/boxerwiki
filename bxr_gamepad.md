@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_gamepad.h`.
 
-# Boxer's Gamepad Input Handling.
+# Gamepad Input Handling.
 
 Up to `BXR_GAMEPAD_MAX` gamepads are tracked.
 

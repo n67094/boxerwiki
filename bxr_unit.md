@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_unit.h`.
 
-# Boxer's Simple Unit Testing API.
+# Simple Unit Testing API.
 
 Example usage:
 

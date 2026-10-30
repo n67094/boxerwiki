@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_math.h`.
 
-# Boxer's Math Utilities.
+# Math Utilities.
 
 Copyright (c) 2025 nsix. All rights reserved.
 

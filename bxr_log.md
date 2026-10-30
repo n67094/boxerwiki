@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_log.h`.
 
-# Boxer's Logging Utilities.
+# Logging Utilities.
 
 The default minimum priority is `BXR_LOG_PRIORITY_DEBUG`, so every level is
 shown until `bxr_log_set_priority()` is called.

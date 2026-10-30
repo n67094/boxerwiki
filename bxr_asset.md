@@ -1,7 +1,7 @@
 <a name="line-undefined"></a>
 File `bxr_asset.h`.
 
-# Boxer's Game Asset Management.
+# Game Asset Management.
 
 Built on PhysicsFS. Directories and archives are mounted into a single
 read-only search path, and one write directory.
