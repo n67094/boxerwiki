@@ -3,7 +3,7 @@ File `bxr_defs.h`.
 
 Copyright (c) 2026 nsix. All rights reserved.
 
-# Global Definitions and Constants
+# Global Definitions
 
 <a name="line-undefined"></a>
 Marks a public function for export from (or import into) the boxer library.
