@@ -55,6 +55,27 @@ BXR_API bool bxr_asset_mount(const char *path)
 
 
 <a name="line-undefined"></a>
+Add an archive held in memory to the end of the read search path.
+
+`data` archive bytes. Must not be NULL and must stay valid until unmounted.
+
+`length` size of `data` in bytes. Must be greater than 0.
+
+`name` name identifying the archive; its extension selects the archive format
+(e.g. "assets.zip"). Pass it to `bxr_asset_unmount()` to unmount. Must not be
+NULL.
+
+`return` true on success, false on failure.
+Call `bxr_get_error()` for more information.
+
+```cpp
+BXR_API bool
+```
+
+---
+
+
+<a name="line-undefined"></a>
 Remove a directory or archive from the read search path.
 
 `path` directory or archive to unmount, exactly as given to
