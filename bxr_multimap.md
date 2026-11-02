@@ -15,6 +15,11 @@ Slot state in the multimap.
 
 ```cpp
 typedef enum
+{
+  BXR_MULTIMAP_SLOT_EMPTY     = 0, // Empty slot
+  BXR_MULTIMAP_SLOT_OCCUPIED  = 1, // Occupied slot
+  BXR_MULTIMAP_SLOT_TOMBSTONE = 2  // Deleted slot (tombstone)
+} bxr_multimap_slot_e
 ```
 
 ---
@@ -94,6 +99,7 @@ not found.
 
 ```cpp
 bool
+bxr_multimap_remove_value(bxr_multimap_t *map, const char *key, Uint32 value)
 ```
 
 ---
@@ -132,6 +138,8 @@ allocation fails.
 
 ```cpp
 size_t bxr_multimap_get_values(bxr_multimap_t *map,
+                               const char *key,
+                               Uint32 **out_values)
 ```
 
 ---

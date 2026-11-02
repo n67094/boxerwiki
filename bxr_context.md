@@ -16,6 +16,17 @@ state.
 
 ```cpp
 typedef struct bxr_context_s
+{
+  bxr_game_config_t config;
+
+  SDL_Window *window;
+  SDL_PixelFormat pixel_format;
+  SDL_GPUTextureFormat texture_format;
+  SDL_GPUDevice *gpu_device;
+
+  Uint64 target_delta_ns; // fixed time between updates, never 0.
+  Uint64 frame_count; // number of frames rendered since the application started
+} bxr_context_t
 ```
 
 ---

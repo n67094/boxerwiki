@@ -43,6 +43,9 @@ Handle to loaded audio data.
 
 ```cpp
 typedef struct bxr_audio_s
+{
+  Uint32 id;
+} bxr_audio_t
 ```
 
 ---
@@ -53,6 +56,9 @@ Handle to a playback voice.
 
 ```cpp
 typedef struct bxr_voice_s
+{
+  Uint32 id;
+} bxr_voice_t
 ```
 
 ---
@@ -74,6 +80,13 @@ when false the voice loops.
 
 ```cpp
 typedef struct bxr_voice_desc_s
+{
+  bxr_audio_t audio;
+  float volume;
+  bool auto_play;
+  bool play_once;
+  bool keep_alive; // keep it, don't evict it when the voice limit is reached
+} bxr_voice_desc_t
 ```
 
 ---

@@ -70,6 +70,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bool
+bxr_asset_mount_memory(const void *data, size_t length, const char *name)
 ```
 
 ---
@@ -198,6 +199,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bool
+bxr_asset_write(const char *path, const void *data, size_t length, bool append)
 ```
 
 ---

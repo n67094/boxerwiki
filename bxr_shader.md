@@ -30,6 +30,11 @@ Shader stage.
 
 ```cpp
 typedef enum
+{
+  BXR_SHADER_STAGE_VERTEX   = SDL_GPU_SHADERSTAGE_VERTEX,
+  BXR_SHADER_STAGE_FRAGMENT = SDL_GPU_SHADERSTAGE_FRAGMENT,
+  BXR_SHADER_STAGE_SIZE     = 2,
+} bxr_shader_stage_e
 ```
 
 ---
@@ -43,6 +48,9 @@ Handle to a GPU shader.
 
 ```cpp
 typedef struct bxr_shader_s
+{
+  size_t id;
+} bxr_shader_t
 ```
 
 ---
@@ -62,6 +70,15 @@ Must not be NULL.
 
 ```cpp
 typedef struct bxr_shader_desc_s
+{
+  const char *name;
+  const char *entrypoint;
+  bxr_shader_stage_e stage;
+  Uint32 num_samplers;
+  Uint32 num_storage_textures;
+  Uint32 num_storage_buffers;
+  Uint32 num_uniform_buffers;
+} bxr_shader_desc_t
 ```
 
 ---

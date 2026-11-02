@@ -18,6 +18,9 @@ Handle to an image.
 
 ```cpp
 typedef struct bxr_image_s
+{
+  Uint32 id;
+} bxr_image_t
 ```
 
 ---
@@ -73,6 +76,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bxr_image_t bxr_image_create_mem(
+    int width, int height, bxr_pixel_format_e format, void *pixels, int pitch)
 ```
 
 ---

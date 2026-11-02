@@ -83,6 +83,10 @@ Asserts that an expression is true.
 
 ```cpp
 #define BXR_UNIT_ASSERT(expr)                                                  \
+  do {                                                                         \
+    if (!bxr_unit_assert((expr) ? true : false, (#expr), __FILE__, __LINE__))  \
+      return false;                                                            \
+  } while (false)
 ```
 
 ---

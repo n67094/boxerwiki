@@ -21,6 +21,11 @@ A vertex with position, texture coordinates and color.
 
 ```cpp
 typedef struct bxr_vertex_s
+{
+  bxr_vec2_t position;
+  bxr_vec2_t texcoord;
+  bxr_color_t color;
+} bxr_vertex_t
 ```
 
 ---
@@ -31,6 +36,10 @@ A rectangle with a destination region and a source region in the texture.
 
 ```cpp
 typedef struct bxr_textured_rect_s
+{
+  bxr_rect_t dst;
+  bxr_rect_t src;
+} bxr_textured_rect_t
 ```
 
 ---
@@ -46,6 +55,7 @@ in the texture.
 
 ```cpp
 #define bxr_textured_rect_create(dst, src)                                     \
+  ((const bxr_textured_rect_t){ dst, src })
 ```
 
 ---
@@ -60,6 +70,7 @@ Set the coordinate space boundaries mapped onto the current viewport.
 
 ```cpp
 BXR_API void
+bxr_painter_set_projection(float left, float right, float bottom, float top)
 ```
 
 ---
@@ -215,6 +226,9 @@ The data is copied. `vs_size + fs_size` must not exceed
 
 ```cpp
 BXR_API void bxr_painter_set_uniform(const void *vs_data,
+                                     size_t vs_size,
+                                     const void *fs_data,
+                                     size_t fs_size)
 ```
 
 ---
@@ -424,6 +438,8 @@ Draw raw vertices as the given primitive.
 
 ```cpp
 BXR_API void bxr_painter_draw(bxr_primitive_e primitive_type,
+                              const bxr_vertex_t *vertices,
+                              Uint32 vertices_count)
 ```
 
 ---
@@ -486,6 +502,7 @@ Draw a polyline joining consecutive points with the current color.
 
 ```cpp
 BXR_API void bxr_painter_draw_lines_strip(const bxr_vec2_t *points,
+                                          Uint32 count)
 ```
 
 ---
@@ -500,6 +517,7 @@ Draw filled triangles with the current color.
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_triangles(const bxr_triangle_t *triangles,
+                                               Uint32 count)
 ```
 
 ---
@@ -524,6 +542,7 @@ Draw a filled triangle strip with the current color.
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_triangles_strip(const bxr_vec2_t *points,
+                                                     Uint32 count)
 ```
 
 ---
@@ -538,6 +557,7 @@ Draw filled rectangles with the current color.
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_rects(const bxr_rect_t *rects,
+                                           Uint32 count)
 ```
 
 ---
@@ -566,6 +586,8 @@ image must be bound to it.
 
 ```cpp
 BXR_API void bxr_painter_draw_textured_rects(int channel,
+                                             const bxr_textured_rect_t *rects,
+                                             Uint32 count)
 ```
 
 ---
@@ -582,6 +604,7 @@ image must be bound to it.
 
 ```cpp
 BXR_API void bxr_painter_draw_textured_rect(int channel,
+                                            bxr_textured_rect_t rect)
 ```
 
 ---

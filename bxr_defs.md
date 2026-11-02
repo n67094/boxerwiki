@@ -6,20 +6,6 @@ Copyright (c) 2026 nsix. All rights reserved.
 # Global Definitions
 
 <a name="line-undefined"></a>
-Marks a public function for export from (or import into) the boxer library.
-
-On Windows it expands to `__declspec(dllexport)` when `BOXER_BUILD` is
-defined (building boxer) and `__declspec(dllimport)` otherwise. Elsewhere it
-expands to `extern`.
-
-```cpp
-#if defined(_WIN32)
-```
-
----
-
-
-<a name="line-undefined"></a>
 Returns `def` if `val` is 0, otherwise returns `val`.
 
 ```cpp

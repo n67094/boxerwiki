@@ -73,6 +73,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data,
+                                                size_t length)
 ```
 
 ---
@@ -110,6 +111,7 @@ If the key appears several times in the section, the first one wins.
 
 ```cpp
 BXR_API const char *
+bxr_ini_read_str(bxr_ini_reader_t *ini, const char *section, const char *key)
 ```
 
 ---
@@ -128,6 +130,8 @@ Get the value of a key parsed as a number.
 
 ```cpp
 BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
+                                  const char *section,
+                                  const char *key)
 ```
 
 ---
@@ -149,6 +153,9 @@ Get the string value of a key, or a fallback if it is missing.
 
 ```cpp
 BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
+                                             const char *section,
+                                             const char *key,
+                                             const char *default_value)
 ```
 
 ---
@@ -169,6 +176,9 @@ Get the value of a key parsed as a number, or a fallback if it is missing.
 
 ```cpp
 BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
+                                          const char *section,
+                                          const char *key,
+                                          float default_value)
 ```
 
 ---
@@ -221,6 +231,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini,
+                                          const char *section)
 ```
 
 ---
@@ -259,6 +270,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bool
+bxr_ini_write_str(bxr_ini_writer_t *ini, const char *key, const char *value)
 ```
 
 ---
@@ -281,6 +293,7 @@ Call `bxr_get_error()` for more information.
 
 ```cpp
 BXR_API bool
+bxr_ini_write_number(bxr_ini_writer_t *ini, const char *key, float number)
 ```
 
 ---
@@ -319,6 +332,7 @@ becomes invalid after the next write or `bxr_ini_destroy_writer()`.
 
 ```cpp
 BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini,
+                                             size_t *length)
 ```
 
 ---

@@ -16,6 +16,15 @@ Mouse buttons.
 
 ```cpp
 typedef enum
+{
+  BXR_MOUSE_UNKNOWN = 0,
+  BXR_MOUSE_LEFT    = SDL_BUTTON_LEFT,
+  BXR_MOUSE_MIDDLE  = SDL_BUTTON_MIDDLE,
+  BXR_MOUSE_RIGHT   = SDL_BUTTON_RIGHT,
+  BXR_MOUSE_X1      = SDL_BUTTON_X1,
+  BXR_MOUSE_X2      = SDL_BUTTON_X2,
+  BXR_MOUSE_SIZE    = 6,
+} bxr_mouse_e
 ```
 
 ---

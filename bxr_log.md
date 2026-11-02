@@ -25,6 +25,13 @@ Log priority levels.
 
 ```cpp
 typedef enum
+{
+  BXR_LOG_PRIORITY_DEBUG = 0,
+  BXR_LOG_PRIORITY_INFO,
+  BXR_LOG_PRIORITY_WARN,
+  BXR_LOG_PRIORITY_ERROR,
+  BXR_LOG_PRIORITY_SIZE
+} bxr_log_priority_e
 ```
 
 ---

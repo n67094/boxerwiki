@@ -114,6 +114,7 @@ Fill `nbytes` of memory at `ptr` with the byte `value`.
 
 ```cpp
 #define BXR_MEMSET(ptr, value, nbytes)                                         \
+  SDL_memset((ptr), (value), (size_t)(nbytes))
 ```
 
 ---
@@ -126,6 +127,7 @@ Copy `nbytes` from `src` to `dest`, the regions must not overlap.
 
 ```cpp
 #define BXR_MEMCPY(dest, src, nbytes)                                          \
+  SDL_memcpy((dest), (src), (size_t)(nbytes))
 ```
 
 ---
@@ -138,6 +140,7 @@ Copy `nbytes` from `src` to `dest`, the regions may overlap.
 
 ```cpp
 #define BXR_MEMMOVE(dest, src, nbytes)                                         \
+  SDL_memmove((dest), (src), (size_t)(nbytes))
 ```
 
 ---
@@ -151,6 +154,7 @@ byte in `ptr1` is lower or greater than the one in `ptr2`.
 
 ```cpp
 #define BXR_MEMCMP(ptr1, ptr2, nbytes)                                         \
+  SDL_memcmp((ptr1), (ptr2), (size_t)(nbytes))
 ```
 
 ---

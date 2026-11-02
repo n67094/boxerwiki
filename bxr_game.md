@@ -29,6 +29,19 @@ not larger than `width` and `height`.
 
 ```cpp
 typedef struct bxr_game_config_s
+{
+  const char *name;
+  const char *title;
+
+  unsigned int width;
+  unsigned int height;
+
+  unsigned int virtual_width;
+  unsigned int virtual_height;
+
+  bool fullscreen;
+  bool resizable;
+} bxr_game_config_t
 ```
 
 ---

@@ -21,6 +21,7 @@ function.
 
 ```cpp
 BXR_API bool bxr_set_error(SDL_PRINTF_FORMAT_STRING const char *fmt, ...)
+    SDL_PRINTF_VARARG_FUNC(1)
 ```
 
 ---

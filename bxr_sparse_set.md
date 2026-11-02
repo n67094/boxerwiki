@@ -114,6 +114,8 @@ array, or `SIZE_MAX` if the handle is not in the set.
 
 ```cpp
 bool bxr_sparse_set_contains(const bxr_sparse_set_t *set,
+                             size_t handle,
+                             size_t *found)
 ```
 
 ---

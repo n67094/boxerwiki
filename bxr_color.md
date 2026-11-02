@@ -15,6 +15,12 @@ RGBA color with 8 bits per channel, from 0 to 255.
 
 ```cpp
 typedef struct bxr_color_s
+{
+  Uint8 r;
+  Uint8 g;
+  Uint8 b;
+  Uint8 a;
+} bxr_color_t
 ```
 
 ---

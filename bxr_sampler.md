@@ -19,6 +19,13 @@ Sampler presets: filtering (point = nearest, linear) and address mode
 
 ```cpp
 typedef enum
+{
+  BXR_SAMPLER_POINT_CLAMP = 0,
+  BXR_SAMPLER_POINT_WRAP,
+  BXR_SAMPLER_LINEAR_CLAMP,
+  BXR_SAMPLER_LINEAR_WRAP,
+  BXR_GP_SAMPLER_SIZE,
+} bxr_sampler_e
 ```
 
 ---
@@ -32,6 +39,9 @@ Handle to a GPU sampler.
 
 ```cpp
 typedef struct bxr_sampler_s
+{
+  SDL_GPUSampler *sampler;
+} bxr_sampler_t
 ```
 
 ---

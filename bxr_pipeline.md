@@ -17,6 +17,16 @@ Blend mode for the pipeline.
 
 ```cpp
 typedef enum
+{
+  BXR_BLENDMODE_NONE = 0,
+  BXR_BLENDMODE_BLEND,
+  BXR_BLENDMODE_BLEND_PREMULTIPLIED,
+  BXR_BLENDMODE_ADD,
+  BXR_BLENDMODE_ADD_PREMULTIPLIED,
+  BXR_BLENDMODE_MOD,
+  BXR_BLENDMODE_MUL,
+  BXR_BLENDMODE_SIZE,
+} bxr_blendmode_e
 ```
 
 ---
@@ -27,6 +37,14 @@ Primitive type for the pipeline.
 
 ```cpp
 typedef enum
+{
+  BXR_PRIMITIVE_TRIANGLES      = SDL_GPU_PRIMITIVETYPE_TRIANGLELIST,
+  BXR_PRIMITIVE_TRIANGLE_STRIP = SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP,
+  BXR_PRIMITIVE_LINES          = SDL_GPU_PRIMITIVETYPE_LINELIST,
+  BXR_PRIMITIVE_LINE_STRIP     = SDL_GPU_PRIMITIVETYPE_LINESTRIP,
+  BXR_PRIMITIVE_POINTS         = SDL_GPU_PRIMITIVETYPE_POINTLIST,
+  BXR_PRIMITIVE_SIZE           = 5
+} bxr_primitive_e
 ```
 
 ---
@@ -40,6 +58,9 @@ Handle to a graphics pipeline.
 
 ```cpp
 typedef struct bxr_pipeline_s
+{
+  size_t id;
+} bxr_pipeline_t
 ```
 
 ---
@@ -69,6 +90,9 @@ created.
 
 ```cpp
 BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert,
+                                           bxr_shader_t shader_frag,
+                                           bxr_primitive_e primitive_type,
+                                           bxr_blendmode_e blend_mode)
 ```
 
 ---
