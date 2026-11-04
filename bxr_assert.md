@@ -11,11 +11,12 @@ Asserts that an expression is true, and aborts the program if it is false.
 ## Macros
 
 <a name="line-undefined"></a>
-Check that `expr` is true, and abort the program if it is false.
 
 ```cpp
 #define BXR_ASSERT(expr) SDL_assert(expr)
 ```
+
+Check that `expr` is true, and abort the program if it is false.
 
 ---
 

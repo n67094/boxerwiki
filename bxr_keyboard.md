@@ -15,7 +15,6 @@ key value of the current keyboard layout, use `bxr_key_name()` or
 ## Enums
 
 <a name="line-undefined"></a>
-Keyboard keys.
 
 ```cpp
 typedef enum
@@ -132,11 +131,12 @@ typedef enum
 } bxr_key_e
 ```
 
+Keyboard keys.
+
 ---
 
 
 <a name="line-undefined"></a>
-Keyboard modifiers.
 
 ```cpp
 typedef enum
@@ -162,6 +162,8 @@ typedef enum
 } bxr_keymod_e
 ```
 
+Keyboard modifiers.
+
 ---
 
 
@@ -169,6 +171,11 @@ typedef enum
 ## API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *bxr_key_name_ex(bxr_key_e key, bxr_keymod_e mod)
+```
+
 Get the name of a key in the current keyboard layout, using the given
 modifier state.
 
@@ -181,14 +188,15 @@ BXR_KEY_UNKNOWN is passed.
 
 **Note**: the string is owned by SDL; do not free or modify it.
 
-```cpp
-BXR_API const char *bxr_key_name_ex(bxr_key_e key, bxr_keymod_e mod)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *bxr_key_name(bxr_key_e key)
+```
+
 Get the name of a key in the current keyboard layout, using the current
 modifier state.
 
@@ -199,68 +207,73 @@ BXR_KEY_UNKNOWN is passed.
 
 **Note**: the string is owned by SDL; do not free or modify it.
 
-```cpp
-BXR_API const char *bxr_key_name(bxr_key_e key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_key_held(bxr_key_e key)
+```
+
 Check if a key is currently held down.
 
 `key` key to check, in `[0, BXR_KEY_SIZE)`.
 
 `return` true if the key is held, false otherwise.
 
-```cpp
-BXR_API bool bxr_key_held(bxr_key_e key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Check if any key was pressed during the previous frame.
-
-`return` true if at least one key was pressed, false otherwise.
 
 ```cpp
 BXR_API bool bxr_key_any_just_pressed(void)
 ```
 
+Check if any key was pressed during the previous frame.
+
+`return` true if at least one key was pressed, false otherwise.
+
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_key_just_pressed(bxr_key_e key)
+```
+
 Check if a key was pressed during the previous frame.
 
 `key` key to check, in `[0, BXR_KEY_SIZE)`.
 
 `return` true if the key was just pressed, false otherwise.
 
-```cpp
-BXR_API bool bxr_key_just_pressed(bxr_key_e key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_key_just_released(bxr_key_e key)
+```
+
 Check if a key was released during the previous frame.
 
 `key` key to check, in `[0, BXR_KEY_SIZE)`.
 
 `return` true if the key was just released, false otherwise.
 
-```cpp
-BXR_API bool bxr_key_just_released(bxr_key_e key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API Uint64 bxr_key_held_time(bxr_key_e key)
+```
+
 Get how long a key has been held down.
 
 `key` key to check, in `[0, BXR_KEY_SIZE)`.
@@ -268,24 +281,21 @@ Get how long a key has been held down.
 `return` the time since the key was pressed in milliseconds, or 0 if it is
 not held.
 
-```cpp
-BXR_API Uint64 bxr_key_held_time(bxr_key_e key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_keymod_pressed(bxr_keymod_e mod)
+```
+
 Check if a modifier is currently active.
 
 `mod` modifier mask to check. Combined values such as `BXR_KEYMOD_SHIFT`
 match either side. `BXR_KEYMOD_NONE` always returns false.
 
 `return` true if any bit of `mod` is active, false otherwise.
-
-```cpp
-BXR_API bool bxr_keymod_pressed(bxr_keymod_e mod)
-```
 
 ---
 

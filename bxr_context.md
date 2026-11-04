@@ -9,10 +9,6 @@ Copyright (c) 2026 nsix. All rights reserved.
 ## Typedefs
 
 <a name="line-undefined"></a>
-Global context of the application.
-
-Contains the configuration, the window, the GPU device and other global
-state.
 
 ```cpp
 typedef struct bxr_context_s
@@ -29,6 +25,11 @@ typedef struct bxr_context_s
 } bxr_context_t
 ```
 
+Global context of the application.
+
+Contains the configuration, the window, the GPU device and other global
+state.
+
 ---
 
 
@@ -36,48 +37,56 @@ typedef struct bxr_context_s
 ## API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_context_t *bxr_context_get(void)
+```
+
 Get the global context and create it if it doesn't exist yet.
 
 `return` the global context, or `NULL` if the allocation failed.
 
 **Note**: the context is owned by the engine, the caller must not free it.
 
-```cpp
-BXR_API bxr_context_t *bxr_context_get(void)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API SDL_GPUDevice *bxr_context_get_gpu_device(void)
+```
+
 Get the GPU device used for rendering.
 
 `return` the GPU device, or `NULL` if not created yet.
 
 **Note**: the device is owned by the engine, the caller must not destroy it.
 
-```cpp
-BXR_API SDL_GPUDevice *bxr_context_get_gpu_device(void)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API SDL_Window *bxr_context_get_window(void)
+```
+
 Get the game window.
 
 `return` the window, or `NULL` if not created yet.
 
 **Note**: the window is owned by the engine, the caller must not destroy it.
 
-```cpp
-BXR_API SDL_Window *bxr_context_get_window(void)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_context_set_window_dimensions(int width, int height)
+```
+
 Resize the window and store the new size in the configuration.
 
 `width` new width in window coordinates.
@@ -88,26 +97,28 @@ return `true` if the window was resized successfully, `false` otherwise.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_context_set_window_dimensions(int width, int height)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Get the window size stored in the configuration.
-
-`return` the size in window coordinates (x = width, y = height).
 
 ```cpp
 BXR_API bxr_vec2_t bxr_context_get_window_dimensions(void)
 ```
 
+Get the window size stored in the configuration.
+
+`return` the size in window coordinates (x = width, y = height).
+
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API void bxr_context_set_virtual_window_dimensions(int width, int height)
+```
+
 Set the virtual resolution the game renders at.
 
 Takes effect on the next frame, the window itself is not resized.
@@ -116,26 +127,28 @@ Takes effect on the next frame, the window itself is not resized.
 
 `height` virtual height in pixels.
 
-```cpp
-BXR_API void bxr_context_set_virtual_window_dimensions(int width, int height)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Get the virtual resolution the game renders at.
-
-`return` the virtual size in pixels (x = width, y = height).
 
 ```cpp
 BXR_API bxr_vec2_t bxr_context_get_virtual_window_dimensions(void)
 ```
 
+Get the virtual resolution the game renders at.
+
+`return` the virtual size in pixels (x = width, y = height).
+
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_context_set_fullscreen(bool fullscreen)
+```
+
 Switch the window between fullscreen and windowed mode.
 
 `fullscreen` `true` for fullscreen, `false` for windowed.
@@ -144,26 +157,28 @@ Switch the window between fullscreen and windowed mode.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_context_set_fullscreen(bool fullscreen)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Check whether the window is in fullscreen mode.
-
-`return` true if fullscreen, `false` otherwise.
 
 ```cpp
 BXR_API bool bxr_context_is_fullscreen(void)
 ```
 
+Check whether the window is in fullscreen mode.
+
+`return` true if fullscreen, `false` otherwise.
+
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_context_set_resizable(bool resizable)
+```
+
 Allow or forbid the user to resize the window.
 
 `resizable` `true` to allow resizing, `false` to forbid it.
@@ -172,33 +187,31 @@ Allow or forbid the user to resize the window.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_context_set_resizable(bool resizable)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Check whether the window can be resized.
-
-`return` true if the window is resizable, `false` otherwise.
 
 ```cpp
 BXR_API bool bxr_context_is_resizable(void)
 ```
 
+Check whether the window can be resized.
+
+`return` true if the window is resizable, `false` otherwise.
+
 ---
 
 
 <a name="line-undefined"></a>
-Get the number of frames rendered since the application started.
-
-`return` the frame count.
 
 ```cpp
 BXR_API Uint64 bxr_context_get_frame_count(void)
 ```
+
+Get the number of frames rendered since the application started.
+
+`return` the frame count.
 
 ---
 

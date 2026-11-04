@@ -11,7 +11,6 @@ Hash map from string keys to sets of `Uint32` values (boxer resource ids).
 ## Enums
 
 <a name="line-undefined"></a>
-Slot state in the multimap.
 
 ```cpp
 typedef enum
@@ -22,6 +21,8 @@ typedef enum
 } bxr_multimap_slot_e
 ```
 
+Slot state in the multimap.
+
 ---
 
 
@@ -29,11 +30,12 @@ typedef enum
 ## Typedefs
 
 <a name="line-undefined"></a>
-Handle to a multimap.
 
 ```cpp
 typedef struct bxr_multimap_s bxr_multimap_t
 ```
+
+Handle to a multimap.
 
 ---
 
@@ -42,6 +44,11 @@ typedef struct bxr_multimap_s bxr_multimap_t
 ## API
 
 <a name="line-undefined"></a>
+
+```cpp
+bxr_multimap_t *bxr_multimap_create(size_t initial_size)
+```
+
 Create an empty multimap.
 
 `initial_size` initial slot count. Rounded up to the next power of two, with
@@ -52,14 +59,15 @@ Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_multimap_destroy()`.
 
-```cpp
-bxr_multimap_t *bxr_multimap_create(size_t initial_size)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+bool bxr_multimap_add(bxr_multimap_t *map, const char *key, Uint32 value)
+```
+
 Add a value to the set of values of a key.
 
 The key is created if missing. Adding a value already present for the key
@@ -75,14 +83,16 @@ is a no-op that succeeds.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-bool bxr_multimap_add(bxr_multimap_t *map, const char *key, Uint32 value)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+bool
+bxr_multimap_remove_value(bxr_multimap_t *map, const char *key, Uint32 value)
+```
+
 Remove a value from the set of values of a key.
 
 Value order in the bucket is not preserved. The key is removed when its last
@@ -97,15 +107,15 @@ value is removed.
 `return` true if the value was removed, false if the key or the value was
 not found.
 
-```cpp
-bool
-bxr_multimap_remove_value(bxr_multimap_t *map, const char *key, Uint32 value)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+bool bxr_multimap_remove(bxr_multimap_t *map, const char *key)
+```
+
 Remove a key and all its values.
 
 `map` the multimap; must not be NULL.
@@ -114,14 +124,17 @@ Remove a key and all its values.
 
 `return` true if the key was removed, false if it was not found.
 
-```cpp
-bool bxr_multimap_remove(bxr_multimap_t *map, const char *key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+size_t bxr_multimap_get_values(bxr_multimap_t *map,
+                               const char *key,
+                               Uint32 **out_values)
+```
+
 Get a copy of the values of a key, in no particular order.
 
 `map` the multimap; must not be NULL.
@@ -136,37 +149,33 @@ allocation fails.
 
 **Note**: the caller must free `*out_values` with `BXR_FREE()`.
 
-```cpp
-size_t bxr_multimap_get_values(bxr_multimap_t *map,
-                               const char *key,
-                               Uint32 **out_values)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+size_t bxr_multimap_count(bxr_multimap_t *map)
+```
+
 Get the number of keys.
 
 `map` the multimap; must not be NULL.
 
 `return` the number of keys, not the total number of values.
 
-```cpp
-size_t bxr_multimap_count(bxr_multimap_t *map)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a multimap and free all its keys and values.
-
-`map` the multimap to destroy.
 
 ```cpp
 void bxr_multimap_destroy(bxr_multimap_t *map)
 ```
+
+Destroy a multimap and free all its keys and values.
+
+`map` the multimap to destroy.
 
 ---
 

@@ -13,7 +13,6 @@ Typical usage: create shaders with `bxr_shader_create()`, combine them with
 ## Enums
 
 <a name="line-undefined"></a>
-Blend mode for the pipeline.
 
 ```cpp
 typedef enum
@@ -29,11 +28,12 @@ typedef enum
 } bxr_blendmode_e
 ```
 
+Blend mode for the pipeline.
+
 ---
 
 
 <a name="line-undefined"></a>
-Primitive type for the pipeline.
 
 ```cpp
 typedef enum
@@ -47,6 +47,8 @@ typedef enum
 } bxr_primitive_e
 ```
 
+Primitive type for the pipeline.
+
 ---
 
 
@@ -54,7 +56,6 @@ typedef enum
 ## Typedefs
 
 <a name="line-undefined"></a>
-Handle to a graphics pipeline.
 
 ```cpp
 typedef struct bxr_pipeline_s
@@ -63,6 +64,8 @@ typedef struct bxr_pipeline_s
 } bxr_pipeline_t
 ```
 
+Handle to a graphics pipeline.
+
 ---
 
 
@@ -70,6 +73,14 @@ typedef struct bxr_pipeline_s
 ## API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert,
+                                           bxr_shader_t shader_frag,
+                                           bxr_primitive_e primitive_type,
+                                           bxr_blendmode_e blend_mode)
+```
+
 Create a graphics pipeline from a vertex and a fragment shader.
 
 `shader_vert` a vertex shader from `bxr_shader_create()`.
@@ -88,39 +99,34 @@ Call `bxr_get_error()` for more information.
 `bxr_pipeline_destroy()`. The shaders can be destroyed once the pipeline is
 created.
 
-```cpp
-BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert,
-                                           bxr_shader_t shader_frag,
-                                           bxr_primitive_e primitive_type,
-                                           bxr_blendmode_e blend_mode)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_pipeline_is_valid(bxr_pipeline_t pipeline)
+```
+
 Check if a graphics pipeline handle is valid.
 
 `pipeline` a pipeline from `bxr_pipeline_create()`.
 
 `return` true if the pipeline is valid, false otherwise.
 
-```cpp
-BXR_API bool bxr_pipeline_is_valid(bxr_pipeline_t pipeline)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a graphics pipeline and release its GPU resources.
-
-`pipeline` a pipeline from `bxr_pipeline_create()`. It must not be in use
-by the painter for the current frame.
 
 ```cpp
 BXR_API void bxr_pipeline_destroy(bxr_pipeline_t pipeline)
 ```
+
+Destroy a graphics pipeline and release its GPU resources.
+
+`pipeline` a pipeline from `bxr_pipeline_create()`. It must not be in use
+by the painter for the current frame.
 
 ---
 

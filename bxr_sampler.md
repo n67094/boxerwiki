@@ -14,8 +14,6 @@ Create a sampler from one of the `bxr_sampler_e` presets, bind it with
 ## Enums
 
 <a name="line-undefined"></a>
-Sampler presets: filtering (point = nearest, linear) and address mode
-(clamp to edge, wrap = repeat) applied on all axes.
 
 ```cpp
 typedef enum
@@ -28,6 +26,9 @@ typedef enum
 } bxr_sampler_e
 ```
 
+Sampler presets: filtering (point = nearest, linear) and address mode
+(clamp to edge, wrap = repeat) applied on all axes.
+
 ---
 
 
@@ -35,7 +36,6 @@ typedef enum
 ## Typedefs
 
 <a name="line-undefined"></a>
-Handle to a GPU sampler.
 
 ```cpp
 typedef struct bxr_sampler_s
@@ -44,6 +44,8 @@ typedef struct bxr_sampler_s
 } bxr_sampler_t
 ```
 
+Handle to a GPU sampler.
+
 ---
 
 
@@ -51,6 +53,11 @@ typedef struct bxr_sampler_s
 ## API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_sampler_t bxr_sampler_create(bxr_sampler_e sampler_type)
+```
+
 Create a GPU sampler from a preset.
 
 `sampler_type` the preset to use.
@@ -63,21 +70,18 @@ Call `bxr_get_error()` for more information.
 **Note**: the caller owns the sampler and must release it with
 `bxr_sampler_destroy()` while the GPU device is still alive.
 
-```cpp
-BXR_API bxr_sampler_t bxr_sampler_create(bxr_sampler_e sampler_type)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a GPU sampler and release its GPU resources.
-
-`sampler` the sampler to destroy.
 
 ```cpp
 BXR_API void bxr_sampler_destroy(bxr_sampler_t *sampler)
 ```
+
+Destroy a GPU sampler and release its GPU resources.
+
+`sampler` the sampler to destroy.
 
 ---
 

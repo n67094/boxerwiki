@@ -33,21 +33,23 @@ test= ; this will be ignored
 ## Typedefs
 
 <a name="line-undefined"></a>
-Handle to an INI reader.
 
 ```cpp
 typedef struct bxr_ini_reader_s bxr_ini_reader_t
 ```
 
+Handle to an INI reader.
+
 ---
 
 
 <a name="line-undefined"></a>
-Handle to an INI writer.
 
 ```cpp
 typedef struct bxr_ini_writer_s bxr_ini_writer_t
 ```
+
+Handle to an INI writer.
 
 ---
 
@@ -56,6 +58,12 @@ typedef struct bxr_ini_writer_s bxr_ini_writer_t
 ## Reader API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data,
+                                                size_t length)
+```
+
 Parse INI data and return a reader for it.
 
 Malformed lines are skipped silently, so parsing itself never fails.
@@ -71,29 +79,31 @@ Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_reader()`.
 
-```cpp
-BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data,
-                                                size_t length)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API void bxr_ini_destroy_reader(bxr_ini_reader_t *ini)
+```
+
 Destroy a reader and free its resources.
 
 `ini` reader to destroy.
 
 **NOTE:** String returned by the `bxr_ini_read_*()` functions become invalid.
 
-```cpp
-BXR_API void bxr_ini_destroy_reader(bxr_ini_reader_t *ini)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *
+bxr_ini_read_str(bxr_ini_reader_t *ini, const char *section, const char *key)
+```
+
 Get the string value of a key.
 
 If the key appears several times in the section, the first one wins.
@@ -109,15 +119,17 @@ If the key appears several times in the section, the first one wins.
 **Note**: the result is owned by the reader and stays valid until
 `bxr_ini_destroy_reader()`.
 
-```cpp
-BXR_API const char *
-bxr_ini_read_str(bxr_ini_reader_t *ini, const char *section, const char *key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
+                                  const char *section,
+                                  const char *key)
+```
+
 Get the value of a key parsed as a number.
 
 `ini` reader to query. Must not be `NULL`.
@@ -128,16 +140,18 @@ Get the value of a key parsed as a number.
 
 `return` the parsed value, or `0.0f` if not found.
 
-```cpp
-BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini,
-                                  const char *section,
-                                  const char *key)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
+                                             const char *section,
+                                             const char *key,
+                                             const char *default_value)
+```
+
 Get the string value of a key, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
@@ -151,17 +165,18 @@ Get the string value of a key, or a fallback if it is missing.
 `return` the value (owned by the reader, see `bxr_ini_read_str()`), or
 `default_value` if not found.
 
-```cpp
-BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini,
-                                             const char *section,
-                                             const char *key,
-                                             const char *default_value)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
+                                          const char *section,
+                                          const char *key,
+                                          float default_value)
+```
+
 Get the value of a key parsed as a number, or a fallback if it is missing.
 
 `ini` reader to query. Must not be `NULL`.
@@ -174,13 +189,6 @@ Get the value of a key parsed as a number, or a fallback if it is missing.
 
 `return` the parsed value, or `default_value` if not found.
 
-```cpp
-BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
-                                          const char *section,
-                                          const char *key,
-                                          float default_value)
-```
-
 ---
 
 
@@ -188,6 +196,11 @@ BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini,
 ## Writer API
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bxr_ini_writer_t *bxr_ini_create_writer(void)
+```
+
 Create an empty INI writer.
 
 `return` the writer, or `NULL` on failure.
@@ -196,26 +209,29 @@ Call `bxr_get_error()` for more information.
 
 **Note**: the caller must free the result with `bxr_ini_destroy_writer()`.
 
-```cpp
-BXR_API bxr_ini_writer_t *bxr_ini_create_writer(void)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
-Destroy a writer and free its resources.
-
-`ini` writer to destroy. `NULL` is allowed and does nothing.
 
 ```cpp
 BXR_API void bxr_ini_destroy_writer(bxr_ini_writer_t *ini)
 ```
 
+Destroy a writer and free its resources.
+
+`ini` writer to destroy. `NULL` is allowed and does nothing.
+
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini,
+                                          const char *section)
+```
+
 Start a section by writing its `[section]` header.
 
 Sections cannot be nested: the previous one must be closed with
@@ -229,15 +245,15 @@ Sections cannot be nested: the previous one must be closed with
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini,
-                                          const char *section)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_section_end(bxr_ini_writer_t *ini)
+```
+
 Close the current section by writing an empty line.
 
 `ini` writer to use, with a section open. Must not be `NULL`.
@@ -246,14 +262,16 @@ Close the current section by writing an empty line.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_ini_writer_section_end(bxr_ini_writer_t *ini)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool
+bxr_ini_write_str(bxr_ini_writer_t *ini, const char *key, const char *value)
+```
+
 Write a `key="value"` line in the current section.
 
 The value is quoted and escaped.
@@ -268,15 +286,16 @@ The value is quoted and escaped.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool
-bxr_ini_write_str(bxr_ini_writer_t *ini, const char *key, const char *value)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool
+bxr_ini_write_number(bxr_ini_writer_t *ini, const char *key, float number)
+```
+
 Write a `key=number` line in the current section.
 
 The number is formatted with `%g`, so only 6 significant digits are kept.
@@ -291,15 +310,15 @@ The number is formatted with `%g`, so only 6 significant digits are kept.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool
-bxr_ini_write_number(bxr_ini_writer_t *ini, const char *key, float number)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
+```
+
 Save the INI text written so far to a file.
 
 `ini` writer to read from. Must not be `NULL`.
@@ -310,14 +329,16 @@ Save the INI text written so far to a file.
 
 Call `bxr_get_error()` for more information.
 
-```cpp
-BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
-```
-
 ---
 
 
 <a name="line-undefined"></a>
+
+```cpp
+BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini,
+                                             size_t *length)
+```
+
 Get the INI text written so far.
 
 `ini` writer to read from. Must not be `NULL`.
@@ -329,11 +350,6 @@ terminator. May be `NULL`.
 
 **Note**: the result is owned by the writer. Do not modify or free it; it
 becomes invalid after the next write or `bxr_ini_destroy_writer()`.
-
-```cpp
-BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini,
-                                             size_t *length)
-```
 
 ---
 

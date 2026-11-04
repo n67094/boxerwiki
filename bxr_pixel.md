@@ -11,7 +11,6 @@ Pixel formats used by boxer images.
 ## Enums
 
 <a name="line-undefined"></a>
-Pixel formats.
 
 ```cpp
 typedef enum bxr_pixel_format_e
@@ -103,6 +102,8 @@ typedef enum bxr_pixel_format_e
 #endif
 } bxr_pixel_format_e
 ```
+
+Pixel formats.
 
 ---
 
