@@ -58,8 +58,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool
-bxr_asset_mount_memory(const void *data, size_t length, const char *name)
+BXR_API bool bxr_asset_mount_memory(const void *data, size_t length, const char *name)
 ```
 
 Add an archive held in memory to the end of the read search path.
@@ -180,8 +179,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool
-bxr_asset_write(const char *path, const void *data, size_t length, bool append)
+BXR_API bool bxr_asset_write(const char *path, const void *data, size_t length, bool append)
 ```
 
 Write data to a file in the write directory.

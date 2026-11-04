@@ -108,9 +108,7 @@ Remove a handle from the set.
 <a name="line-undefined"></a>
 
 ```cpp
-bool bxr_sparse_set_contains(const bxr_sparse_set_t *set,
-                             size_t handle,
-                             size_t *found)
+bool bxr_sparse_set_contains(const bxr_sparse_set_t *set, size_t handle, size_t *found)
 ```
 
 Check whether a handle is in the set.

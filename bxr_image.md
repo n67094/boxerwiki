@@ -55,8 +55,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bxr_image_t bxr_image_create_mem(
-    int width, int height, bxr_pixel_format_e format, void *pixels, int pitch)
+BXR_API bxr_image_t bxr_image_create_mem(int width, int height, bxr_pixel_format_e format, void *pixels, int pitch)
 ```
 
 Create an image from raw pixels in memory.

@@ -75,10 +75,7 @@ Handle to a graphics pipeline.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert,
-                                           bxr_shader_t shader_frag,
-                                           bxr_primitive_e primitive_type,
-                                           bxr_blendmode_e blend_mode)
+BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert, bxr_shader_t shader_frag, bxr_primitive_e primitive_type, bxr_blendmode_e blend_mode)
 ```
 
 Create a graphics pipeline from a vertex and a fragment shader.

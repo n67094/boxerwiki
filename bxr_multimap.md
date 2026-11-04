@@ -89,8 +89,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-bool
-bxr_multimap_remove_value(bxr_multimap_t *map, const char *key, Uint32 value)
+bool bxr_multimap_remove_value(bxr_multimap_t *map, const char *key, Uint32 value)
 ```
 
 Remove a value from the set of values of a key.
@@ -130,9 +129,7 @@ Remove a key and all its values.
 <a name="line-undefined"></a>
 
 ```cpp
-size_t bxr_multimap_get_values(bxr_multimap_t *map,
-                               const char *key,
-                               Uint32 **out_values)
+size_t bxr_multimap_get_values(bxr_multimap_t *map, const char *key, Uint32 **out_values)
 ```
 
 Get a copy of the values of a key, in no particular order.

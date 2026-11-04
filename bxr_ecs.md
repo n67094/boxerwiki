@@ -121,10 +121,7 @@ Remove all entities, keeping component and system definitions.
 <a name="line-undefined"></a>
 
 ```cpp
-typedef void (*bxr_ecs_component_add_cb)(bxr_ecs_t *ecs,
-                                         bxr_ecs_entity_t entity,
-                                         void *component_ptr,
-                                         void *args)
+typedef void (*bxr_ecs_component_add_cb)(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, void *component_ptr, void *args)
 ```
 
 Callback called when a component is added to an entity.
@@ -143,9 +140,7 @@ Callback called when a component is added to an entity.
 <a name="line-undefined"></a>
 
 ```cpp
-typedef void (*bxr_ecs_component_remove_cb)(bxr_ecs_t *ecs,
-                                            bxr_ecs_entity_t entity,
-                                            void *component_ptr)
+typedef void (*bxr_ecs_component_remove_cb)(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, void *component_ptr)
 ```
 
 Callback called when a component is removed from an entity.
@@ -162,11 +157,7 @@ Callback called when a component is removed from an entity.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bxr_ecs_component_t
-bxr_ecs_component_define(bxr_ecs_t *ecs,
-                         size_t component_size,
-                         bxr_ecs_component_add_cb add_cb,
-                         bxr_ecs_component_remove_cb remove_cb)
+BXR_API bxr_ecs_component_t bxr_ecs_component_define(bxr_ecs_t *ecs, size_t component_size, bxr_ecs_component_add_cb add_cb, bxr_ecs_component_remove_cb remove_cb)
 ```
 
 Define a new component type.
@@ -209,8 +200,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool bxr_ecs_entity_is_ready(const bxr_ecs_t *ecs,
-                                     bxr_ecs_entity_t entity)
+BXR_API bool bxr_ecs_entity_is_ready(const bxr_ecs_t *ecs, bxr_ecs_entity_t entity)
 ```
 
 Check if an entity is alive and not queued for destruction.
@@ -227,9 +217,7 @@ Check if an entity is alive and not queued for destruction.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool bxr_ecs_entity_has_component(const bxr_ecs_t *ecs,
-                                          bxr_ecs_entity_t entity,
-                                          bxr_ecs_component_t component)
+BXR_API bool bxr_ecs_entity_has_component(const bxr_ecs_t *ecs, bxr_ecs_entity_t entity, bxr_ecs_component_t component)
 ```
 
 Check if an entity has a component.
@@ -248,10 +236,7 @@ Check if an entity has a component.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void *bxr_ecs_entity_add_component(bxr_ecs_t *ecs,
-                                           bxr_ecs_entity_t entity,
-                                           bxr_ecs_component_t component,
-                                           void *args)
+BXR_API void *bxr_ecs_entity_add_component(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, bxr_ecs_component_t component, void *args)
 ```
 
 Add a component to an entity.
@@ -274,9 +259,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void *bxr_ecs_entity_get_component(bxr_ecs_t *ecs,
-                                           bxr_ecs_entity_t entity,
-                                           bxr_ecs_component_t component)
+BXR_API void *bxr_ecs_entity_get_component(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, bxr_ecs_component_t component)
 ```
 
 Get the data of an entity's component.
@@ -295,9 +278,7 @@ Get the data of an entity's component.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void bxr_ecs_entity_remove_component(bxr_ecs_t *ecs,
-                                             bxr_ecs_entity_t entity,
-                                             bxr_ecs_component_t component)
+BXR_API void bxr_ecs_entity_remove_component(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, bxr_ecs_component_t component)
 ```
 
 Remove a component from an entity.
@@ -336,10 +317,7 @@ ECS System API
 <a name="line-undefined"></a>
 
 ```cpp
-typedef int (*bxr_ecs_system_logic_cb)(bxr_ecs_t *ecs,
-                                       const bxr_ecs_entity_t *entities,
-                                       size_t entity_count,
-                                       void *udata)
+typedef int (*bxr_ecs_system_logic_cb)(bxr_ecs_t *ecs, const bxr_ecs_entity_t *entities, size_t entity_count, void *udata)
 ```
 
 Callback called when a system is run.
@@ -360,9 +338,7 @@ Callback called when a system is run.
 <a name="line-undefined"></a>
 
 ```cpp
-typedef void (*bxr_ecs_system_add_cb)(bxr_ecs_t *ecs,
-                                      bxr_ecs_entity_t entity,
-                                      void *udata)
+typedef void (*bxr_ecs_system_add_cb)(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, void *udata)
 ```
 
 Callback called when an entity is added to a system.
@@ -379,9 +355,7 @@ Callback called when an entity is added to a system.
 <a name="line-undefined"></a>
 
 ```cpp
-typedef void (*bxr_ecs_system_remove_cb)(bxr_ecs_t *ecs,
-                                         bxr_ecs_entity_t entity,
-                                         void *udata)
+typedef void (*bxr_ecs_system_remove_cb)(bxr_ecs_t *ecs, bxr_ecs_entity_t entity, void *udata)
 ```
 
 Callback called when an entity is removed from a system.
@@ -398,13 +372,7 @@ Callback called when an entity is removed from a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bxr_ecs_system_t
-bxr_ecs_system_define(bxr_ecs_t *ecs,
-                      bxr_ecs_mask_t mask,
-                      bxr_ecs_system_logic_cb logic_cb,
-                      bxr_ecs_system_add_cb add_cb,
-                      bxr_ecs_system_remove_cb remove_cb,
-                      void *udata)
+BXR_API bxr_ecs_system_t bxr_ecs_system_define(bxr_ecs_t *ecs, bxr_ecs_mask_t mask, bxr_ecs_system_logic_cb logic_cb, bxr_ecs_system_add_cb add_cb, bxr_ecs_system_remove_cb remove_cb, void *udata)
 ```
 
 Define a new system, enabled by default.
@@ -434,9 +402,7 @@ Call `bxr_get_error()` for more information.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void bxr_ecs_system_require_component(bxr_ecs_t *ecs,
-                                              bxr_ecs_system_t system,
-                                              bxr_ecs_component_t component)
+BXR_API void bxr_ecs_system_require_component(bxr_ecs_t *ecs, bxr_ecs_system_t system, bxr_ecs_component_t component)
 ```
 
 Require a component for an entity to belong to a system.
@@ -453,9 +419,7 @@ Require a component for an entity to belong to a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void bxr_ecs_system_exclude_component(bxr_ecs_t *ecs,
-                                              bxr_ecs_system_t system,
-                                              bxr_ecs_component_t component)
+BXR_API void bxr_ecs_system_exclude_component(bxr_ecs_t *ecs, bxr_ecs_system_t system, bxr_ecs_component_t component)
 ```
 
 Exclude entities holding a component from a system.
@@ -503,11 +467,7 @@ it.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void bxr_ecs_system_set_callbacks(bxr_ecs_t *ecs,
-                                          bxr_ecs_system_t system,
-                                          bxr_ecs_system_logic_cb logic_cb,
-                                          bxr_ecs_system_add_cb add_cb,
-                                          bxr_ecs_system_remove_cb remove_cb)
+BXR_API void bxr_ecs_system_set_callbacks(bxr_ecs_t *ecs, bxr_ecs_system_t system, bxr_ecs_system_logic_cb logic_cb, bxr_ecs_system_add_cb add_cb, bxr_ecs_system_remove_cb remove_cb)
 ```
 
 Replace the callbacks of a system.
@@ -528,8 +488,7 @@ Replace the callbacks of a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void
-bxr_ecs_system_set_udata(bxr_ecs_t *ecs, bxr_ecs_system_t system, void *udata)
+BXR_API void bxr_ecs_system_set_udata(bxr_ecs_t *ecs, bxr_ecs_system_t system, void *udata)
 ```
 
 Set the user data passed to a system's callbacks.
@@ -563,9 +522,7 @@ Get the user data of a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API void bxr_ecs_system_set_mask(bxr_ecs_t *ecs,
-                                     bxr_ecs_system_t system,
-                                     bxr_ecs_mask_t mask)
+BXR_API void bxr_ecs_system_set_mask(bxr_ecs_t *ecs, bxr_ecs_system_t system, bxr_ecs_mask_t mask)
 ```
 
 Set the group mask (a.k.a. tags) of a system.
@@ -582,8 +539,7 @@ Set the group mask (a.k.a. tags) of a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bxr_ecs_mask_t bxr_ecs_system_get_mask(bxr_ecs_t *ecs,
-                                               bxr_ecs_system_t system)
+BXR_API bxr_ecs_mask_t bxr_ecs_system_get_mask(bxr_ecs_t *ecs, bxr_ecs_system_t system)
 ```
 
 Get the group mask (a.k.a. tags) of a system.
@@ -600,8 +556,7 @@ Get the group mask (a.k.a. tags) of a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API size_t bxr_ecs_system_get_entity_count(bxr_ecs_t *ecs,
-                                               bxr_ecs_system_t system)
+BXR_API size_t bxr_ecs_system_get_entity_count(bxr_ecs_t *ecs, bxr_ecs_system_t system)
 ```
 
 Get the number of entities belonging to a system.
@@ -618,9 +573,7 @@ Get the number of entities belonging to a system.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API int bxr_ecs_system_run(bxr_ecs_t *ecs,
-                               bxr_ecs_system_t system,
-                               bxr_ecs_mask_t mask)
+BXR_API int bxr_ecs_system_run(bxr_ecs_t *ecs, bxr_ecs_system_t system, bxr_ecs_mask_t mask)
 ```
 
 Run a system's logic callback over its entities.

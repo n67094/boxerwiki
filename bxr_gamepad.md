@@ -301,10 +301,7 @@ is not connected.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool bxr_gamepad_rumble(int index,
-                                Uint16 low_frequency,
-                                Uint16 high_frequency,
-                                Uint32 duration_ms)
+BXR_API bool bxr_gamepad_rumble(int index, Uint16 low_frequency, Uint16 high_frequency, Uint32 duration_ms)
 ```
 
 Start a rumble effect, replacing any effect in progress.

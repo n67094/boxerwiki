@@ -11,8 +11,7 @@ Copyright (c) 2026 nsix. All rights reserved.
 <a name="line-undefined"></a>
 
 ```cpp
-BXR_API bool bxr_set_error(SDL_PRINTF_FORMAT_STRING const char *fmt, ...)
-    SDL_PRINTF_VARARG_FUNC(1)
+BXR_API bool bxr_set_error(SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(1)
 ```
 
 Set the error message.
