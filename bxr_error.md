@@ -1,14 +1,17 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_error.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Error Handling
 
-<a name="line-undefined"></a>
+Failing boxer functions store a message describing the error; read it with
+`bxr_get_error()`. Only the last error is kept.
+
+<a name="line-19"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-23"></a>
 
 ```cpp
 BXR_API bool bxr_set_error(SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(1)
@@ -27,7 +30,7 @@ function.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-37"></a>
 
 ```cpp
 BXR_API const char *bxr_get_error(void)
@@ -43,7 +46,7 @@ The string is owned by boxer and stays valid until the next
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-47"></a>
 
 ```cpp
 BXR_API void bxr_clear_error(void)

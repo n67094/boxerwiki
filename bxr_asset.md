@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_asset.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Game Asset
 
@@ -29,10 +29,32 @@ Supported archive types by PhysicsFS:
 - .POD (Terminal Velocity POD archives)
 - .DAT (Resident Evil 3 rofs.dat archives)
 
-<a name="line-undefined"></a>
+Typical usage:
+
+```cpp
+bxr_asset_mount("assets.zip");
+
+size_t length = 0;
+Uint8 *data   = bxr_asset_read("level/map.txt", &length);
+if (data == NULL) {
+  BXR_LOG_ERROR("%s", bxr_get_error());
+}
+
+...
+
+BXR_FREE(data);
+
+bxr_asset_write("save.ini", text, text_length, false);
+
+...
+
+bxr_asset_unmount("assets.zip");
+```
+
+<a name="line-62"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-66"></a>
 
 ```cpp
 BXR_API bool bxr_asset_mount(const char *path)
@@ -56,7 +78,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-84"></a>
 
 ```cpp
 BXR_API bool bxr_asset_mount_memory(const void *data, size_t length, const char *name)
@@ -79,7 +101,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-102"></a>
 
 ```cpp
 BXR_API bool bxr_asset_unmount(const char *path)
@@ -95,7 +117,7 @@ Remove a directory or archive from the read search path.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-112"></a>
 
 ```cpp
 BXR_API bool bxr_asset_exists(const char *path)
@@ -112,7 +134,7 @@ Searches the write directory and every mounted directory and archive.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-123"></a>
 
 ```cpp
 BXR_API bool bxr_asset_has_extension(const char *path, const char *extension)
@@ -137,7 +159,7 @@ NULL.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-142"></a>
 
 ```cpp
 BXR_API bool bxr_asset_is_directory(const char *path)
@@ -152,7 +174,7 @@ Check if a path in the virtual file system is a directory.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-151"></a>
 
 ```cpp
 BXR_API Uint8 *bxr_asset_read(const char *path, size_t *length)
@@ -178,7 +200,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-171"></a>
 
 ```cpp
 BXR_API bool bxr_asset_write(const char *path, const void *data, size_t length, bool append)
@@ -213,7 +235,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-201"></a>
 
 ```cpp
 BXR_API bool bxr_asset_delete(const char *path)

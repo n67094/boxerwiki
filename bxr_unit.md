@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_unit.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Unit Testing
 
@@ -21,13 +21,33 @@ BXR_UNIT_SUITE(test_suite) { // Define suite
 BXR_UNIT_RUN_SUITE(test_suite) // Run suite
 ```
 
-<a name="line-undefined"></a>
-API
-
-<a name="line-undefined"></a>
+<a name="line-30"></a>
 
 ```cpp
-#define BXR_UNIT_RUN_SUITE(suite_cb) bxr_unit_run_suite(#suite_cb, suite_cb)
+typedef bool (*bxr_unit_case_cb)(void)
+```
+
+
+---
+
+
+<a name="line-33"></a>
+
+```cpp
+typedef void (*bxr_unit_suite_cb)(void)
+```
+
+
+---
+
+
+<a name="line-43"></a>
+API
+
+<a name="line-47"></a>
+
+```cpp
+#define BXR_UNIT_RUN_SUITE(suite_cb)
 ```
 
 Runs a test suite function and reports the results to the console.
@@ -37,10 +57,10 @@ Runs a test suite function and reports the results to the console.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-54"></a>
 
 ```cpp
-#define BXR_UNIT_SUITE(name) void name(void)
+#define BXR_UNIT_SUITE(name)
 ```
 
 Defines a test suite function.
@@ -50,10 +70,10 @@ Defines a test suite function.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-61"></a>
 
 ```cpp
-#define BXR_UNIT_RUN_CASE(test_cb) (bxr_unit_run_case(#test_cb, test_cb))
+#define BXR_UNIT_RUN_CASE(test_cb)
 ```
 
 Runs a single unit test case and reports the result to the console.
@@ -63,10 +83,10 @@ Runs a single unit test case and reports the result to the console.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-68"></a>
 
 ```cpp
-#define BXR_UNIT_CASE(name) static bool name(void)
+#define BXR_UNIT_CASE(name)
 ```
 
 Defines a test case function.
@@ -78,14 +98,10 @@ Defines a test case function.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-77"></a>
 
 ```cpp
-#define BXR_UNIT_ASSERT(expr)                                                  \
-  do {                                                                         \
-    if (!bxr_unit_assert((expr) ? true : false, (#expr), __FILE__, __LINE__))  \
-      return false;                                                            \
-  } while (false)
+#define BXR_UNIT_ASSERT(expr)
 ```
 
 Asserts that an expression is true.
@@ -97,7 +113,7 @@ Asserts that an expression is true.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-90"></a>
 
 ```cpp
 typedef void (*bxr_unit_setup_cb)(void)
@@ -108,7 +124,7 @@ Functions that are run before and/or after a number of unit tests execute.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-95"></a>
 
 ```cpp
 void bxr_unit_setup(bxr_unit_setup_cb setup_cb, bxr_unit_setup_cb teardown_cb)
@@ -126,7 +142,7 @@ function after. Either of these functions can be `NULL`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-107"></a>
 
 ```cpp
 void bxr_unit_clear_setup(void)
@@ -137,7 +153,7 @@ Disables the setup and teardown functions by setting them to `NULL`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-112"></a>
 
 ```cpp
 void bxr_unit_enable_colors(bool enabled)
@@ -150,7 +166,7 @@ Enables or disables colored output in the console.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-119"></a>
 
 ```cpp
 void bxr_unit_report(void)
@@ -161,7 +177,7 @@ Reports the results of the unit tests to the console.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-124"></a>
 
 ```cpp
 bool bxr_unit_failed(void)

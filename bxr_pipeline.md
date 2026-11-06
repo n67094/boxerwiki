@@ -1,18 +1,61 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_pipeline.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Pipelines
 
-Typical usage: create shaders with `bxr_shader_create()`, combine them with
-`bxr_pipeline_create()`, select the pipeline with
-`bxr_painter_set_pipeline()`, and release it with `bxr_pipeline_destroy()`.
+Typical usage:
 
-<a name="line-undefined"></a>
+```cpp
+bxr_shader_t vert = bxr_shader_create(&(bxr_shader_desc_t){
+  .name       = "shaders/sprite.vert",
+  .entrypoint = "main",
+  .stage      = BXR_SHADER_STAGE_VERTEX,
+});
+bxr_shader_t frag = bxr_shader_create(&(bxr_shader_desc_t){
+  .name         = "shaders/sprite.frag",
+  .entrypoint   = "main",
+  .stage        = BXR_SHADER_STAGE_FRAGMENT,
+  .num_samplers = 1,
+});
+
+_pipeline = bxr_pipeline_create(vert, frag, BXR_PRIMITIVE_TRIANGLES,
+                                BXR_BLENDMODE_BLEND);
+bxr_shader_destroy(vert); // no longer needed once the pipeline exists
+bxr_shader_destroy(frag);
+
+_sampler = bxr_sampler_create(BXR_SAMPLER_POINT_CLAMP);
+
+...
+
+// in bxr_game_render()
+bxr_painter_set_pipeline(_pipeline);
+bxr_painter_set_sampler(0, &_sampler);
+... draw ...
+bxr_painter_reset_sampler(0);
+bxr_painter_reset_pipeline();
+
+...
+
+bxr_sampler_destroy(&_sampler);
+bxr_pipeline_destroy(_pipeline);
+```
+
+<a name="line-51"></a>
+
+```cpp
+#define BXR_PIPELINE_INVALID_ID 0
+```
+
+
+---
+
+
+<a name="line-54"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-58"></a>
 
 ```cpp
 typedef enum
@@ -33,7 +76,7 @@ Blend mode for the pipeline.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-73"></a>
 
 ```cpp
 typedef enum
@@ -52,10 +95,10 @@ Primitive type for the pipeline.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-86"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-90"></a>
 
 ```cpp
 typedef struct bxr_pipeline_s
@@ -69,10 +112,10 @@ Handle to a graphics pipeline.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-98"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-102"></a>
 
 ```cpp
 BXR_API bxr_pipeline_t bxr_pipeline_create(bxr_shader_t shader_vert, bxr_shader_t shader_frag, bxr_primitive_e primitive_type, bxr_blendmode_e blend_mode)
@@ -99,7 +142,7 @@ created.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-126"></a>
 
 ```cpp
 BXR_API bool bxr_pipeline_is_valid(bxr_pipeline_t pipeline)
@@ -114,7 +157,7 @@ Check if a graphics pipeline handle is valid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-135"></a>
 
 ```cpp
 BXR_API void bxr_pipeline_destroy(bxr_pipeline_t pipeline)

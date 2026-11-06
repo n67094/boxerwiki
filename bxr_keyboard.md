@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_keyboard.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Keyboard Handling
 
@@ -11,10 +11,22 @@ press, which can change based on keyboard layout and modifiers). To get the
 key value of the current keyboard layout, use `bxr_key_name()` or
 `bxr_key_name_ex()` with the appropriate modifiers.
 
-<a name="line-undefined"></a>
+Typical usage, in `bxr_game_update()`:
+
+```cpp
+if (bxr_key_held(BXR_KEY_D)) {
+  player.x += speed * delta_ms;
+}
+
+if (bxr_key_just_pressed(BXR_KEY_RETURN)) {
+  scene_go_to(SCENE_LEVEL);
+}
+```
+
+<a name="line-34"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-38"></a>
 
 ```cpp
 typedef enum
@@ -131,12 +143,11 @@ typedef enum
 } bxr_key_e
 ```
 
-Keyboard keys.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-152"></a>
 
 ```cpp
 typedef enum
@@ -162,15 +173,14 @@ typedef enum
 } bxr_keymod_e
 ```
 
-Keyboard modifiers.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-175"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-179"></a>
 
 ```cpp
 BXR_API const char *bxr_key_name_ex(bxr_key_e key, bxr_keymod_e mod)
@@ -191,7 +201,7 @@ BXR_KEY_UNKNOWN is passed.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-194"></a>
 
 ```cpp
 BXR_API const char *bxr_key_name(bxr_key_e key)
@@ -210,7 +220,7 @@ BXR_KEY_UNKNOWN is passed.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-207"></a>
 
 ```cpp
 BXR_API bool bxr_key_held(bxr_key_e key)
@@ -225,7 +235,7 @@ Check if a key is currently held down.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-216"></a>
 
 ```cpp
 BXR_API bool bxr_key_any_just_pressed(void)
@@ -238,7 +248,7 @@ Check if any key was pressed during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-223"></a>
 
 ```cpp
 BXR_API bool bxr_key_just_pressed(bxr_key_e key)
@@ -253,7 +263,7 @@ Check if a key was pressed during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-232"></a>
 
 ```cpp
 BXR_API bool bxr_key_just_released(bxr_key_e key)
@@ -268,7 +278,7 @@ Check if a key was released during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-241"></a>
 
 ```cpp
 BXR_API Uint64 bxr_key_held_time(bxr_key_e key)
@@ -284,7 +294,7 @@ not held.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-251"></a>
 
 ```cpp
 BXR_API bool bxr_keymod_pressed(bxr_keymod_e mod)

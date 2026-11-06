@@ -1,14 +1,54 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_game.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Game Lifecycle
 
-<a name="line-undefined"></a>
+Boxer owns `main()`. Don't implement it yourself. Use the five callbacks
+below to implement your game logic:
+
+- `bxr_game_config()`
+- `bxr_game_setup()`
+- `bxr_game_update()`
+- `bxr_game_render()`
+- `bxr_game_teardown()`
+
+Typical usage:
+
+```cpp
+static bxr_game_config_t _config = { 0 };
+
+const bxr_game_config_t *bxr_game_config(void) {
+  _config.name           = "my_game";
+  _config.title          = "My Game";
+
+  _config.width          = 960;
+  _config.height         = 540;
+
+  _config.virtual_width  = 320;
+  _config.virtual_height = 180;
+
+  return &_config;
+}
+
+void bxr_game_setup(void) { ... }          // load assets, create state
+
+void bxr_game_update(double delta_ms) { ... }
+
+void bxr_game_render(double alpha_ms) {
+  bxr_painter_set_color(BXR_COLOR_BLACK);
+  bxr_painter_clear();
+  ...
+}
+
+void bxr_game_teardown(void) { ... }       // release assets, destroy state
+```
+
+<a name="line-54"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-58"></a>
 
 ```cpp
 typedef struct bxr_game_config_s
@@ -48,10 +88,10 @@ not larger than `width` and `height`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-92"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-96"></a>
 
 ```cpp
 extern const bxr_game_config_t *bxr_game_config(void)
@@ -68,7 +108,7 @@ after the call, so a `static` variable is enough and nothing is freed.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-107"></a>
 
 ```cpp
 extern void bxr_game_setup(void)
@@ -82,7 +122,7 @@ can be used here.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-115"></a>
 
 ```cpp
 extern void bxr_game_update(double delta_ms)
@@ -102,7 +142,7 @@ at most 5 steps are caught up and the remaining lag is dropped.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-129"></a>
 
 ```cpp
 extern void bxr_game_render(double alpha_ms)
@@ -120,7 +160,7 @@ state for smooth rendering.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-141"></a>
 
 ```cpp
 extern void bxr_game_teardown(void)

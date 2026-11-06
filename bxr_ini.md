@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_ini.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # INI reader/writer
 
@@ -29,10 +29,41 @@ name="nsix\ttest" ; Please note that the name contains a tab character
 test= ; this will be ignored
 ```
 
-<a name="line-undefined"></a>
+Typical usage, reading:
+
+```cpp
+size_t length = 0;
+Uint8 *data   = bxr_asset_read("config.ini", &length);
+
+bxr_ini_reader_t *ini = bxr_ini_create_reader(data, length);
+BXR_FREE(data); // the reader keeps its own copy
+
+const char *title = bxr_ini_read_str_or_else(ini, "Window", "title", "Game");
+float width       = bxr_ini_read_number_or_else(ini, "Window", "width", 800);
+
+...
+
+bxr_ini_destroy_reader(ini); // `title` becomes invalid
+```
+
+Typical usage, writing:
+
+```cpp
+bxr_ini_writer_t *ini = bxr_ini_create_writer();
+
+bxr_ini_writer_section_begin(ini, "Window");
+bxr_ini_write_str(ini, "title", "Test");
+bxr_ini_write_number(ini, "width", 800);
+bxr_ini_writer_section_end(ini);
+
+bxr_ini_writer_save(ini, "config.ini");
+bxr_ini_destroy_writer(ini);
+```
+
+<a name="line-71"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-75"></a>
 
 ```cpp
 typedef struct bxr_ini_reader_s bxr_ini_reader_t
@@ -43,7 +74,7 @@ Handle to an INI reader.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-80"></a>
 
 ```cpp
 typedef struct bxr_ini_writer_s bxr_ini_writer_t
@@ -54,10 +85,10 @@ Handle to an INI writer.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-85"></a>
 ## Reader API
 
-<a name="line-undefined"></a>
+<a name="line-89"></a>
 
 ```cpp
 BXR_API bxr_ini_reader_t *bxr_ini_create_reader(const Uint8 *data, size_t length)
@@ -81,7 +112,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-108"></a>
 
 ```cpp
 BXR_API void bxr_ini_destroy_reader(bxr_ini_reader_t *ini)
@@ -96,7 +127,7 @@ Destroy a reader and free its resources.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-117"></a>
 
 ```cpp
 BXR_API const char *bxr_ini_read_str(bxr_ini_reader_t *ini, const char *section, const char *key)
@@ -120,7 +151,7 @@ If the key appears several times in the section, the first one wins.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-136"></a>
 
 ```cpp
 BXR_API float bxr_ini_read_number(bxr_ini_reader_t *ini, const char *section, const char *key)
@@ -139,7 +170,7 @@ Get the value of a key parsed as a number.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-151"></a>
 
 ```cpp
 BXR_API const char *bxr_ini_read_str_or_else(bxr_ini_reader_t *ini, const char *section, const char *key, const char *default_value)
@@ -161,7 +192,7 @@ Get the string value of a key, or a fallback if it is missing.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-170"></a>
 
 ```cpp
 BXR_API float bxr_ini_read_number_or_else(bxr_ini_reader_t *ini, const char *section, const char *key, float default_value)
@@ -182,10 +213,10 @@ Get the value of a key parsed as a number, or a fallback if it is missing.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-188"></a>
 ## Writer API
 
-<a name="line-undefined"></a>
+<a name="line-192"></a>
 
 ```cpp
 BXR_API bxr_ini_writer_t *bxr_ini_create_writer(void)
@@ -202,7 +233,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-203"></a>
 
 ```cpp
 BXR_API void bxr_ini_destroy_writer(bxr_ini_writer_t *ini)
@@ -215,7 +246,7 @@ Destroy a writer and free its resources.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-210"></a>
 
 ```cpp
 BXR_API bool bxr_ini_writer_section_begin(bxr_ini_writer_t *ini, const char *section)
@@ -237,7 +268,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-227"></a>
 
 ```cpp
 BXR_API bool bxr_ini_writer_section_end(bxr_ini_writer_t *ini)
@@ -254,7 +285,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-238"></a>
 
 ```cpp
 BXR_API bool bxr_ini_write_str(bxr_ini_writer_t *ini, const char *key, const char *value)
@@ -277,7 +308,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-256"></a>
 
 ```cpp
 BXR_API bool bxr_ini_write_number(bxr_ini_writer_t *ini, const char *key, float number)
@@ -300,7 +331,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-274"></a>
 
 ```cpp
 BXR_API bool bxr_ini_writer_save(bxr_ini_writer_t *ini, const char *path)
@@ -319,7 +350,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-287"></a>
 
 ```cpp
 BXR_API const Uint8 *bxr_ini_writer_get_data(const bxr_ini_writer_t *ini, size_t *length)

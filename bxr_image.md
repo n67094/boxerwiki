@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_image.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Image
 
@@ -10,10 +10,36 @@ Images are handles (`bxr_image_t`) created from asset files mounted with the
 `bxr_image_destroy()`. A handle whose `id` is `BXR_IMAGE_INVALID_ID` is
 invalid.
 
-<a name="line-undefined"></a>
+Typical usage:
+
+```cpp
+_img = bxr_image_create("title/background.png");
+if (!bxr_image_is_valid(_img)) {
+  BXR_LOG_ERROR("%s", bxr_get_error());
+}
+
+int w = bxr_image_get_width(_img);
+int h = bxr_image_get_height(_img);
+
+...
+
+bxr_image_destroy(_img);
+```
+
+<a name="line-38"></a>
+
+```cpp
+#define BXR_IMAGE_INVALID_ID 0
+```
+
+
+---
+
+
+<a name="line-41"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-45"></a>
 
 ```cpp
 typedef struct bxr_image_s
@@ -27,10 +53,10 @@ Handle to an image.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-53"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-57"></a>
 
 ```cpp
 BXR_API bxr_image_t bxr_image_create(const char *path)
@@ -52,7 +78,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-73"></a>
 
 ```cpp
 BXR_API bxr_image_t bxr_image_create_mem(int width, int height, bxr_pixel_format_e format, void *pixels, int pitch)
@@ -84,7 +110,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-100"></a>
 
 ```cpp
 BXR_API int bxr_image_get_width(bxr_image_t image)
@@ -99,7 +125,7 @@ Get the width of an image.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-109"></a>
 
 ```cpp
 BXR_API int bxr_image_get_height(bxr_image_t image)
@@ -115,7 +141,7 @@ Get the height of an image.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-119"></a>
 
 ```cpp
 BXR_API bool bxr_image_is_valid(bxr_image_t image)
@@ -130,7 +156,7 @@ Check if an image handle is valid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-128"></a>
 
 ```cpp
 BXR_API void bxr_image_destroy(bxr_image_t image)

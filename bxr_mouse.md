@@ -1,17 +1,29 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_mouse.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Mouse Handling
 
 The mouse position is tracked in the game's virtual resolution, and the mouse
 wheel scroll is tracked in the current frame.
 
-<a name="line-undefined"></a>
+Typical usage, in `bxr_game_update()`:
+
+```cpp
+bxr_vec2_t pos = bxr_mouse_pos(); // virtual resolution
+
+if (bxr_mouse_just_pressed(BXR_MOUSE_LEFT)) {
+  select_at(pos);
+}
+
+zoom += bxr_mouse_wheel().y;
+```
+
+<a name="line-32"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-36"></a>
 
 ```cpp
 typedef enum
@@ -26,15 +38,14 @@ typedef enum
 } bxr_mouse_e
 ```
 
-Mouse buttons.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-48"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-52"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_mouse_pos(void)
@@ -47,7 +58,7 @@ Get the position of the mouse cursor in the game's virtual resolution.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-59"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_mouse_window_pos(void)
@@ -60,7 +71,7 @@ Get the current position of the mouse cursor in window coordinates.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-66"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_mouse_prev_pos(void)
@@ -74,7 +85,7 @@ virtual resolution.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-74"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_mouse_prev_window_pos(void)
@@ -88,7 +99,7 @@ coordinates.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-82"></a>
 
 ```cpp
 BXR_API bool bxr_mouse_held(bxr_mouse_e button)
@@ -103,7 +114,7 @@ Check if a mouse button is currently held down.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-91"></a>
 
 ```cpp
 BXR_API bool bxr_mouse_just_pressed(bxr_mouse_e button)
@@ -118,7 +129,7 @@ Check if a mouse button was pressed during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-100"></a>
 
 ```cpp
 BXR_API bool bxr_mouse_just_released(bxr_mouse_e button)
@@ -133,7 +144,7 @@ Check if a mouse button was released during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-109"></a>
 
 ```cpp
 BXR_API Uint8 bxr_mouse_get_clicks(bxr_mouse_e button)
@@ -148,7 +159,7 @@ Get the number of clicks for a mouse button.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-118"></a>
 
 ```cpp
 BXR_API bool bxr_mouse_is_double_click(bxr_mouse_e button)
@@ -163,7 +174,7 @@ Check if a mouse button was double clicked during the previous frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-127"></a>
 
 ```cpp
 BXR_API Uint64 bxr_mouse_held_time(bxr_mouse_e button)
@@ -179,7 +190,7 @@ not held.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-137"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_mouse_wheel(void)
@@ -192,7 +203,7 @@ Get the mouse wheel scroll for the current frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-144"></a>
 
 ```cpp
 BXR_API void bxr_mouse_hide(bool hide)
@@ -205,7 +216,7 @@ Hide or show the mouse cursor.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-151"></a>
 
 ```cpp
 BXR_API bool bxr_mouse_is_visible(void)

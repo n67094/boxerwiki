@@ -1,16 +1,16 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_pixel.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Pixel Formats
 
 Pixel formats used by boxer images.
 
-<a name="line-undefined"></a>
+<a name="line-16"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-20"></a>
 
 ```cpp
 typedef enum bxr_pixel_format_e
@@ -103,7 +103,6 @@ typedef enum bxr_pixel_format_e
 } bxr_pixel_format_e
 ```
 
-Pixel formats.
 
 ---
 

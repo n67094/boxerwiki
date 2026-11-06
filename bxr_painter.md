@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_painter.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # 2D Painter
 
@@ -13,10 +13,29 @@ Public API below may only be called from `bxr_game_update()` or
 Default coordinate space: virtual resolution in pixels, origin at the
 top-left corner, y pointing down.
 
-<a name="line-undefined"></a>
+Typical usage, in `bxr_game_render()`:
+
+```cpp
+bxr_painter_set_color(BXR_COLOR_BLACK);
+bxr_painter_clear();
+
+bxr_painter_set_blendmode(BXR_BLENDMODE_BLEND);
+bxr_painter_set_color(BXR_COLOR_WHITE);
+
+bxr_painter_set_image(0, _img);
+bxr_painter_draw_textured_rect(0, (bxr_textured_rect_t){
+  .dst = { .x = 8, .y = 24, .w = 64, .h = 32 },
+  .src = { .x = 0, .y = 0,  .w = 64, .h = 32 },
+});
+bxr_painter_reset_image(0);
+
+bxr_painter_reset_blendmode();
+```
+
+<a name="line-48"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-52"></a>
 
 ```cpp
 typedef struct bxr_vertex_s
@@ -32,7 +51,7 @@ A vertex with position, texture coordinates and color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-62"></a>
 
 ```cpp
 typedef struct bxr_textured_rect_s
@@ -47,14 +66,13 @@ A rectangle with a destination region and a source region in the texture.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-71"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-75"></a>
 
 ```cpp
-#define bxr_textured_rect_create(dst, src)                                     \
-  ((const bxr_textured_rect_t){ dst, src })
+#define bxr_textured_rect_create(dst, src)
 ```
 
 Constructs a `bxr_textured_rect_t` compound literal from the `dst`
@@ -64,7 +82,7 @@ in the texture.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-83"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_projection(float left, float right, float bottom, float top)
@@ -79,7 +97,7 @@ Set the coordinate space boundaries mapped onto the current viewport.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-93"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_projection(void)
@@ -91,7 +109,7 @@ origin at the top-left corner, y pointing down.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-99"></a>
 
 ```cpp
 BXR_API void bxr_painter_push_transform(void)
@@ -105,7 +123,7 @@ frame.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-107"></a>
 
 ```cpp
 BXR_API void bxr_painter_pop_transform(void)
@@ -117,7 +135,7 @@ Restore the transform matrix saved by the last
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-113"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_transform(void)
@@ -128,7 +146,7 @@ Reset the current transform matrix to identity.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-118"></a>
 
 ```cpp
 BXR_API void bxr_painter_translate(float x, float y)
@@ -141,7 +159,7 @@ Translate the coordinate space of subsequent draws.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-125"></a>
 
 ```cpp
 BXR_API void bxr_painter_rotate(float angle)
@@ -155,7 +173,7 @@ default y-down projection.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-133"></a>
 
 ```cpp
 BXR_API void bxr_painter_rotate_at(float angle, float ax, float ay)
@@ -171,7 +189,7 @@ default y-down projection.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-143"></a>
 
 ```cpp
 BXR_API void bxr_painter_scale(float sx, float sy)
@@ -184,7 +202,7 @@ Scale the coordinate space of subsequent draws around the origin.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-150"></a>
 
 ```cpp
 BXR_API void bxr_painter_scale_at(float sx, float sy, float ax, float ay)
@@ -199,7 +217,7 @@ Scale the coordinate space of subsequent draws around a point.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-159"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_pipeline(bxr_pipeline_t pipeline)
@@ -213,7 +231,7 @@ the caller, who must keep it alive until the frame is flushed.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-167"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_pipeline(void)
@@ -224,7 +242,7 @@ Reset to the builtin pipeline. Also clears the current uniform data.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-172"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_uniform(const void *vs_data, size_t vs_size, const void *fs_data, size_t fs_size)
@@ -246,7 +264,7 @@ The data is copied. `vs_size + fs_size` must not exceed
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-191"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_uniform(void)
@@ -257,7 +275,7 @@ Clear the uniform data (no uniforms).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-196"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_blendmode(bxr_blendmode_e blend_mode)
@@ -268,7 +286,7 @@ Set the blend mode used by subsequent draws.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-201"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_blendmode(void)
@@ -279,7 +297,7 @@ Reset the current blend mode to the default blend mode (no blending).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-206"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_color(bxr_color_t color)
@@ -290,7 +308,7 @@ Set the color used by subsequent draws.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-211"></a>
 
 ```cpp
 BXR_API bxr_color_t bxr_painter_get_color(void)
@@ -303,7 +321,7 @@ Get the current draw color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-218"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_color(void)
@@ -314,7 +332,7 @@ Reset current color to the default color (white).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-223"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_image(int channel, bxr_image_t image)
@@ -329,7 +347,7 @@ Bind an image to a texture channel for subsequent draws.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-232"></a>
 
 ```cpp
 BXR_API void bxr_painter_unset_image(int channel)
@@ -344,7 +362,7 @@ This is the default for every channel except 0.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-241"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_image(int channel)
@@ -359,7 +377,7 @@ This is the default for channel 0.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-250"></a>
 
 ```cpp
 BXR_API void bxr_painter_set_sampler(int channel, bxr_sampler_t *sampler)
@@ -374,7 +392,7 @@ Bind a sampler to a texture channel for subsequent draws.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-259"></a>
 
 ```cpp
 BXR_API void bxr_painter_unset_sampler(int channel)
@@ -387,7 +405,7 @@ Unbind the sampler from a texture channel (no sampler).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-266"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_sampler(int channel)
@@ -400,7 +418,7 @@ Bind the builtin nearest sampler to a texture channel (the default).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-273"></a>
 
 ```cpp
 BXR_API void bxr_painter_scissor(int x, int y, int w, int h)
@@ -418,7 +436,7 @@ ignore the projection and transform.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-285"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_scissor(void)
@@ -429,7 +447,7 @@ Remove the clipping rectangle (draw to the whole frame).
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-290"></a>
 
 ```cpp
 BXR_API void bxr_painter_reset_state(void)
@@ -441,7 +459,7 @@ and pipeline to their defaults.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-296"></a>
 
 ```cpp
 BXR_API void bxr_painter_clear(void)
@@ -455,7 +473,7 @@ blend mode.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-304"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw(bxr_primitive_e primitive_type, const bxr_vertex_t *vertices, Uint32 vertices_count)
@@ -472,7 +490,7 @@ Draw raw vertices as the given primitive.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-317"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_points(const bxr_vec2_t *points, Uint32 count)
@@ -487,7 +505,7 @@ Draw points with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-326"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_point(bxr_vec2_t point)
@@ -498,7 +516,7 @@ Draw a single point with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-331"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_lines(const bxr_line_t *lines, Uint32 count)
@@ -513,7 +531,7 @@ Draw independent line segments with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-340"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_line(bxr_line_t line)
@@ -524,7 +542,7 @@ Draw a single line segment with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-345"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_lines_strip(const bxr_vec2_t *points, Uint32 count)
@@ -539,7 +557,7 @@ Draw a polyline joining consecutive points with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-355"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_triangles(const bxr_triangle_t *triangles, Uint32 count)
@@ -554,7 +572,7 @@ Draw filled triangles with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-365"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_triangle(bxr_triangle_t triangle)
@@ -565,7 +583,7 @@ Draw a single filled triangle with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-370"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_triangles_strip(const bxr_vec2_t *points, Uint32 count)
@@ -580,7 +598,7 @@ Draw a filled triangle strip with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-380"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_rects(const bxr_rect_t *rects, Uint32 count)
@@ -595,7 +613,7 @@ Draw filled rectangles with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-390"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_filled_rect(bxr_rect_t rect)
@@ -606,7 +624,7 @@ Draw a single filled rectangle with the current color.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-395"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_textured_rects(int channel, const bxr_textured_rect_t *rects, Uint32 count)
@@ -625,7 +643,7 @@ image must be bound to it.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-410"></a>
 
 ```cpp
 BXR_API void bxr_painter_draw_textured_rect(int channel, bxr_textured_rect_t rect)

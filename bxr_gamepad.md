@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_gamepad.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Gamepad Handling
 
@@ -12,10 +12,46 @@ Each one is identified by an `index` in [0, `BXR_GAMEPAD_MAX`), the slot
 
 Boxer polls connections and feeds events itself.
 
-<a name="line-undefined"></a>
+Typical usage, in `bxr_game_update()`:
+
+```cpp
+if (bxr_gamepad_connected(0)) {
+  float x = bxr_gamepad_axis(0, BXR_GAMEPAD_AXIS_LEFTX);
+
+  if (bxr_gamepad_just_pressed(0, BXR_GAMEPAD_BUTTON_SOUTH)) {
+    player_jump();
+    bxr_gamepad_rumble(0, 0x4000, 0x4000, 100);
+  }
+}
+```
+
+<a name="line-36"></a>
+
+```cpp
+#define BXR_GAMEPAD_MAX 4
+```
+
+Maximum number of gamepads tracked at the same time.
+
+---
+
+
+<a name="line-41"></a>
+
+```cpp
+#define BXR_GAMEPAD_DEADZONE 0.15f
+```
+
+Default stick deadzone, in [0, 1]; change it with
+`bxr_gamepad_set_deadzone()`.
+
+---
+
+
+<a name="line-47"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-51"></a>
 
 ```cpp
 typedef enum
@@ -51,12 +87,11 @@ typedef enum
 } bxr_gamepad_button_e
 ```
 
-Gamepad buttons.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-84"></a>
 
 ```cpp
 typedef enum
@@ -72,15 +107,14 @@ typedef enum
 } bxr_gamepad_axis_e
 ```
 
-Gamepad axes.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-97"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-101"></a>
 
 ```cpp
 BXR_API int bxr_gamepad_count(void)
@@ -93,7 +127,7 @@ Get the number of gamepads currently connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-108"></a>
 
 ```cpp
 BXR_API void bxr_gamepad_set_deadzone(float deadzone)
@@ -106,7 +140,7 @@ Set the deadzone shared by every gamepad axis.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-115"></a>
 
 ```cpp
 BXR_API float bxr_gamepad_get_deadzone(void)
@@ -119,7 +153,7 @@ Get the deadzone shared by every gamepad axis.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-122"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_connected(int index)
@@ -135,7 +169,7 @@ false otherwise.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-132"></a>
 
 ```cpp
 BXR_API const char *bxr_gamepad_name(int index)
@@ -152,7 +186,7 @@ Get the name of a gamepad.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-143"></a>
 
 ```cpp
 BXR_API const char *bxr_gamepad_serial(int index)
@@ -169,7 +203,7 @@ Get the serial number of a gamepad.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-154"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_held(int index, bxr_gamepad_button_e button)
@@ -186,7 +220,7 @@ Check if a button is held down.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-165"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_any_just_pressed(int index)
@@ -202,7 +236,7 @@ false otherwise or if the gamepad is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-175"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_just_pressed(int index, bxr_gamepad_button_e button)
@@ -222,7 +256,7 @@ gamepad is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-189"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_just_released(int index, bxr_gamepad_button_e button)
@@ -242,7 +276,7 @@ the gamepad is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-203"></a>
 
 ```cpp
 BXR_API Uint64 bxr_gamepad_held_time(int index, bxr_gamepad_button_e button)
@@ -260,7 +294,7 @@ not held or the gamepad is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-215"></a>
 
 ```cpp
 BXR_API float bxr_gamepad_axis(int index, bxr_gamepad_axis_e axis)
@@ -278,7 +312,7 @@ for triggers, 0 inside the deadzone or if the gamepad is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-227"></a>
 
 ```cpp
 BXR_API float bxr_gamepad_axis_prev(int index, bxr_gamepad_axis_e axis)
@@ -298,7 +332,7 @@ is not connected.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-241"></a>
 
 ```cpp
 BXR_API bool bxr_gamepad_rumble(int index, Uint16 low_frequency, Uint16 high_frequency, Uint32 duration_ms)

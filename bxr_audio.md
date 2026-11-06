@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_audio.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Audio and Playback
 
@@ -35,10 +35,21 @@ set to `true`.
 Voices handle validity can be checked with `bxr_voice_is_valid()` to avoid
 using a destroyed voice.
 
-<a name="line-undefined"></a>
+<a name="line-46"></a>
+
+```cpp
+#define BXR_AUDIO_INVALID_ID 0
+#define BXR_VOICE_INVALID_ID 0
+```
+
+
+---
+
+
+<a name="line-50"></a>
 ## Structs
 
-<a name="line-undefined"></a>
+<a name="line-54"></a>
 
 ```cpp
 typedef struct bxr_audio_s
@@ -52,7 +63,7 @@ Handle to loaded audio data.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-62"></a>
 
 ```cpp
 typedef struct bxr_voice_s
@@ -66,7 +77,7 @@ Handle to a playback voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-70"></a>
 
 ```cpp
 typedef struct bxr_voice_desc_s
@@ -95,10 +106,10 @@ when false the voice loops.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-93"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-97"></a>
 
 ```cpp
 BXR_API bxr_audio_t bxr_audio_create(const char *path)
@@ -119,7 +130,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-112"></a>
 
 ```cpp
 BXR_API Uint64 bxr_audio_get_length(bxr_audio_t audio)
@@ -134,7 +145,7 @@ Get the duration of an audio.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-121"></a>
 
 ```cpp
 BXR_API void bxr_audio_destroy(bxr_audio_t audio)
@@ -150,10 +161,10 @@ become invalid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-131"></a>
 ## Global controls
 
-<a name="line-undefined"></a>
+<a name="line-135"></a>
 
 ```cpp
 BXR_API void bxr_audio_set_global_volume(float volume)
@@ -166,7 +177,7 @@ Set the master volume of the playback device.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-142"></a>
 
 ```cpp
 BXR_API float bxr_audio_get_global_volume(void)
@@ -179,7 +190,7 @@ Get the master volume of the playback device.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-149"></a>
 
 ```cpp
 BXR_API bool bxr_audio_is_valid(bxr_audio_t audio)
@@ -194,10 +205,10 @@ Check whether an audio handle is valid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-158"></a>
 ## Voice playback
 
-<a name="line-undefined"></a>
+<a name="line-162"></a>
 
 ```cpp
 BXR_API bxr_voice_t bxr_voice_create(const bxr_voice_desc_t *desc)
@@ -219,7 +230,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-178"></a>
 
 ```cpp
 BXR_API void bxr_voice_set_volume(bxr_voice_t voice, float volume)
@@ -234,7 +245,7 @@ Set the volume of a voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-187"></a>
 
 ```cpp
 BXR_API float bxr_voice_get_volume(bxr_voice_t voice)
@@ -249,7 +260,7 @@ Get the volume of a voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-196"></a>
 
 ```cpp
 BXR_API void bxr_voice_play(bxr_voice_t voice)
@@ -262,7 +273,7 @@ Start or resume playback from the current position.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-203"></a>
 
 ```cpp
 BXR_API bool bxr_voice_is_playing(bxr_voice_t voice)
@@ -277,7 +288,7 @@ Check whether a voice is currently playing.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-212"></a>
 
 ```cpp
 BXR_API void bxr_voice_pause(bxr_voice_t voice)
@@ -290,7 +301,7 @@ Pause playback, keeping the current position.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-219"></a>
 
 ```cpp
 BXR_API bool bxr_voice_is_paused(bxr_voice_t voice)
@@ -305,7 +316,7 @@ Check whether a voice is not playing.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-228"></a>
 
 ```cpp
 BXR_API void bxr_voice_stop(bxr_voice_t voice)
@@ -318,7 +329,7 @@ Stop playback and rewind to the start.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-235"></a>
 
 ```cpp
 BXR_API bool bxr_voice_is_stopped(bxr_voice_t voice)
@@ -333,7 +344,7 @@ Check whether a voice is stopped.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-244"></a>
 
 ```cpp
 BXR_API Uint64 bxr_voice_get_position(bxr_voice_t voice)
@@ -348,7 +359,7 @@ Get the playback position of a voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-253"></a>
 
 ```cpp
 BXR_API bool bxr_voice_set_position(bxr_voice_t voice, Uint64 position_ms)
@@ -369,7 +380,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-268"></a>
 
 ```cpp
 BXR_API bool bxr_voice_set_pitch(bxr_voice_t voice, float pitch)
@@ -388,7 +399,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-281"></a>
 
 ```cpp
 BXR_API float bxr_voice_get_pitch(bxr_voice_t voice)
@@ -403,7 +414,7 @@ Get the pitch of a voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-290"></a>
 
 ```cpp
 BXR_API bool bxr_voice_set_pan(bxr_voice_t voice, float pan)
@@ -426,7 +437,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-307"></a>
 
 ```cpp
 BXR_API float bxr_voice_get_pan(bxr_voice_t voice)
@@ -441,7 +452,7 @@ Get the stereo balance of a voice.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-316"></a>
 
 ```cpp
 BXR_API bool bxr_voice_is_valid(bxr_voice_t voice)
@@ -456,7 +467,7 @@ Check whether a voice handle is valid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-325"></a>
 
 ```cpp
 BXR_API void bxr_voice_destroy(bxr_voice_t voice)
@@ -469,10 +480,10 @@ Stop a voice and free it, removing it from all its tags.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-332"></a>
 ## Tags
 
-<a name="line-undefined"></a>
+<a name="line-336"></a>
 
 ```cpp
 BXR_API bool bxr_audio_tag_add(const char *tag_name, bxr_voice_t voice)
@@ -491,7 +502,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-349"></a>
 
 ```cpp
 BXR_API bool bxr_audio_tag_remove(const char *tag_name, bxr_voice_t voice)
@@ -509,10 +520,10 @@ tag.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-361"></a>
 ## Group playback
 
-<a name="line-undefined"></a>
+<a name="line-365"></a>
 
 ```cpp
 BXR_API void bxr_audio_tag_set_volume(const char *tag_name, float volume)
@@ -527,7 +538,7 @@ Set the volume of every voice in a tag.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-374"></a>
 
 ```cpp
 BXR_API void bxr_audio_tag_play(const char *tag_name)
@@ -540,7 +551,7 @@ Start or resume every voice in a tag.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-381"></a>
 
 ```cpp
 BXR_API void bxr_audio_tag_pause(const char *tag_name)
@@ -553,7 +564,7 @@ Pause every voice in a tag.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-388"></a>
 
 ```cpp
 BXR_API void bxr_audio_tag_stop(const char *tag_name)

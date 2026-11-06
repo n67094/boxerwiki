@@ -1,18 +1,52 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_time.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Time Utilities
 
-<a name="line-undefined"></a>
+Elapsed time since startup, blocking delays, and timers calling a callback
+after a delay.
+
+Typical usage:
 
 ```cpp
-BXR_INLINE Uint64
-bxr_time_get_ticks(void)
-{
-  return SDL_GetTicks();
+Uint32 on_tick(void *udata, bxr_timer_t id, Uint32 interval_ms) {
+  ...
+  return interval_ms; // 0 to stop the timer
 }
+
+_timer = bxr_time_add_timer(1000, on_tick, NULL);
+
+...
+
+bxr_time_remove_timer(_timer);
+```
+
+<a name="line-34"></a>
+
+```cpp
+typedef SDL_TimerID bxr_timer_t
+```
+
+
+---
+
+
+<a name="line-37"></a>
+
+```cpp
+typedef SDL_TimerCallback bxr_timer_cb_t
+```
+
+
+---
+
+
+<a name="line-40"></a>
+
+```cpp
+BXR_INLINE Uint64 bxr_time_get_ticks(void)
 ```
 
 Get the time elapsed since SDL was initialized.
@@ -22,14 +56,10 @@ Get the time elapsed since SDL was initialized.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-51"></a>
 
 ```cpp
-BXR_INLINE bxr_timer_t
-bxr_time_add_timer(Uint32 interval_ms, bxr_timer_cb_t callback, void *udata)
-{
-  return SDL_AddTimer(interval_ms, callback, udata);
-}
+BXR_INLINE bxr_timer_t bxr_time_add_timer(Uint32 interval_ms, bxr_timer_cb_t callback, void *udata)
 ```
 
 Call a callback function after a delay, repeatedly if it asks to.
@@ -58,14 +88,10 @@ stop itself.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-81"></a>
 
 ```cpp
-BXR_INLINE bool
-bxr_time_remove_timer(bxr_timer_t timer_id)
-{
-  return SDL_RemoveTimer(timer_id);
-}
+BXR_INLINE bool bxr_time_remove_timer(bxr_timer_t timer_id)
 ```
 
 Remove a timer created with `bxr_time_add_timer()`.
@@ -75,14 +101,10 @@ Remove a timer created with `bxr_time_add_timer()`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-92"></a>
 
 ```cpp
-BXR_INLINE void
-bxr_time_delay(Uint32 ms)
-{
-  SDL_Delay(ms);
-}
+BXR_INLINE void bxr_time_delay(Uint32 ms)
 ```
 
 Block the calling thread for at least the given duration.

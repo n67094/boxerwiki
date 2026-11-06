@@ -1,14 +1,17 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_context.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Global Context
 
-<a name="line-undefined"></a>
+Access to the window and GPU device owned by the engine: window and virtual
+resolution size, fullscreen and resizable state, and the frame counter.
+
+<a name="line-20"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-24"></a>
 
 ```cpp
 BXR_API SDL_GPUDevice *bxr_context_get_gpu_device(void)
@@ -23,7 +26,7 @@ Get the GPU device used for rendering.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-33"></a>
 
 ```cpp
 BXR_API SDL_Window *bxr_context_get_window(void)
@@ -38,7 +41,7 @@ Get the game window.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-42"></a>
 
 ```cpp
 BXR_API bool bxr_context_set_window_dimensions(int width, int height)
@@ -57,7 +60,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-55"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_context_get_window_dimensions(void)
@@ -70,7 +73,7 @@ Get the window size stored in the configuration.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-62"></a>
 
 ```cpp
 BXR_API void bxr_context_set_virtual_window_dimensions(int width, int height)
@@ -87,7 +90,7 @@ Takes effect on the next frame, the window itself is not resized.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-73"></a>
 
 ```cpp
 BXR_API bxr_vec2_t bxr_context_get_virtual_window_dimensions(void)
@@ -100,7 +103,7 @@ Get the virtual resolution the game renders at.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-80"></a>
 
 ```cpp
 BXR_API bool bxr_context_set_fullscreen(bool fullscreen)
@@ -117,7 +120,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-91"></a>
 
 ```cpp
 BXR_API bool bxr_context_is_fullscreen(void)
@@ -130,7 +133,7 @@ Check whether the window is in fullscreen mode.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-98"></a>
 
 ```cpp
 BXR_API bool bxr_context_set_resizable(bool resizable)
@@ -147,7 +150,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-109"></a>
 
 ```cpp
 BXR_API bool bxr_context_is_resizable(void)
@@ -160,7 +163,7 @@ Check whether the window can be resized.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-116"></a>
 
 ```cpp
 BXR_API Uint64 bxr_context_get_frame_count(void)

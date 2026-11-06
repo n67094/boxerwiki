@@ -1,14 +1,17 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_defs.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Global Definitions
 
-<a name="line-undefined"></a>
+Export and inline macros, and small helper macros (`BXR_ARRAY_SIZE()`,
+`BXR_DEFAULT()`, terminal escape codes, ...) shared by every boxer header.
+
+<a name="line-37"></a>
 
 ```cpp
-#define BXR_DEFAULT(val, def) (((val) == 0) ? (def) : (val))
+#define BXR_DEFAULT(val, def)
 ```
 
 Returns `def` if `val` is 0, otherwise returns `val`.
@@ -16,10 +19,10 @@ Returns `def` if `val` is 0, otherwise returns `val`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-42"></a>
 
 ```cpp
-#define BXR_OFFSET_OF(TYPE, ELEMENT) SDL_offsetof(TYPE, ELEMENT)
+#define BXR_OFFSET_OF(TYPE, ELEMENT)
 ```
 
 Returns the offset of `ELEMENT` in `TYPE`, in bytes.
@@ -27,10 +30,10 @@ Returns the offset of `ELEMENT` in `TYPE`, in bytes.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-47"></a>
 
 ```cpp
-#define BXR_ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+#define BXR_ARRAY_SIZE(arr)
 ```
 
 Returns the number of elements in an array. Must not be a pointer.
@@ -38,10 +41,16 @@ Returns the number of elements in an array. Must not be a pointer.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-52"></a>
 
 ```cpp
-#define BXR_TERM_ESC "\x1B"
+#define BXR_TERM_ESC
+#define BXR_TERM_RESET
+#define BXR_TERM_BOLD
+#define BXR_TERM_COLOR_CYAN
+#define BXR_TERM_COLOR_GREEN
+#define BXR_TERM_COLOR_YELLOW
+#define BXR_TERM_COLOR_RED
 ```
 
 ANSI terminal escape sequences, as string literals to concatenate with

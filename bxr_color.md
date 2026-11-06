@@ -1,14 +1,18 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_color.h`.
 
-Copyright (c) 2025 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Color Utilities
 
-<a name="line-undefined"></a>
+RGBA color type (`bxr_color_t`), a set of predefined colors
+(`BXR_COLOR_WHITE`, `BXR_COLOR_BLACK`, ...) and `bxr_color_create()` to build
+your own.
+
+<a name="line-18"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-22"></a>
 
 ```cpp
 typedef struct bxr_color_s
@@ -27,112 +31,31 @@ RGBA color with 8 bits per channel, from 0 to 255.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-35"></a>
 ## Macros
 
-<a name="line-undefined"></a>
+<a name="line-39"></a>
 
 ```cpp
-#define BXR_COLOR_WHITE (bxr_color_t){ .r = 255, .g = 255, .b = 255, .a = 255 }
+#define BXR_COLOR_WHITE
+#define BXR_COLOR_BLACK
+#define BXR_COLOR_RED
+#define BXR_COLOR_GREEN
+#define BXR_COLOR_BLUE
+#define BXR_COLOR_MAGENTA
+#define BXR_COLOR_CYAN
+#define BXR_COLOR_YELLOW
+#define BXR_COLOR_TRANSPARENT
 ```
 
-White
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-50"></a>
 
 ```cpp
-#define BXR_COLOR_BLACK (bxr_color_t){ .r = 0, .g = 0, .b = 0, .a = 255 }
-```
-
-Black
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_RED (bxr_color_t){ .r = 255, .g = 0, .b = 0, .a = 255 }
-```
-
-Red
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_GREEN (bxr_color_t){ .r = 0, .g = 255, .b = 0, .a = 255 }
-```
-
-Green
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_BLUE (bxr_color_t){ .r = 0, .g = 0, .b = 255, .a = 255 }
-```
-
-Blue
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_MAGENTA (bxr_color_t){ .r = 255, .g = 0, .b = 255, .a = 255 }
-```
-
-Magenta
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_CYAN (bxr_color_t){ .r = 0, .g = 255, .b = 255, .a = 255 }
-```
-
-Cyan
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_YELLOW (bxr_color_t){ .r = 255, .g = 255, .b = 0, .a = 255 }
-```
-
-Yellow
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define BXR_COLOR_TRANSPARENT (bxr_color_t){ .r = 0, .g = 0, .b = 0, .a = 0 }
-```
-
-Transparent
-
----
-
-
-<a name="line-undefined"></a>
-
-```cpp
-#define bxr_color_create(r, g, b, a) ((const bxr_color_t){ r, g, b, a })
+#define bxr_color_create(r, g, b, a)
 ```
 
 Build a color from its channels.

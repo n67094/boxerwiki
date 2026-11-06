@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_shader.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Shaders
 
@@ -18,14 +18,22 @@ supported by the GPU device, in that order of preference.
 
 Example: "shaders/basic.vert.spv" is a vertex shader named "basic" in SPIR-V.
 
-Typical usage: create a vertex and a fragment shader with
-`bxr_shader_create()`, combine them with `bxr_pipeline_create()`, and
-release them with `bxr_shader_destroy()`.
+See `bxr_pipeline.h` for a typical usage example.
 
-<a name="line-undefined"></a>
+<a name="line-31"></a>
+
+```cpp
+#define BXR_SHADER_INVALID_ID 0
+```
+
+
+---
+
+
+<a name="line-34"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-38"></a>
 
 ```cpp
 typedef enum
@@ -36,15 +44,14 @@ typedef enum
 } bxr_shader_stage_e
 ```
 
-Shader stage.
 
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-46"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-50"></a>
 
 ```cpp
 typedef struct bxr_shader_s
@@ -58,7 +65,7 @@ Handle to a GPU shader.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-58"></a>
 
 ```cpp
 typedef struct bxr_shader_desc_s
@@ -87,10 +94,10 @@ Must not be NULL.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-81"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-85"></a>
 
 ```cpp
 BXR_API bxr_shader_t bxr_shader_create(const bxr_shader_desc_t *desc)
@@ -110,7 +117,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-99"></a>
 
 ```cpp
 BXR_API SDL_GPUShader *bxr_shader_get_sdl(bxr_shader_t shader)
@@ -128,7 +135,7 @@ Get the underlying SDL GPU shader.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-111"></a>
 
 ```cpp
 BXR_API bool bxr_shader_is_valid(bxr_shader_t shader)
@@ -143,7 +150,7 @@ Check if a shader handle is valid.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-120"></a>
 
 ```cpp
 BXR_API void bxr_shader_destroy(bxr_shader_t shader)

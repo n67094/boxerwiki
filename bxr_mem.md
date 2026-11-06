@@ -1,19 +1,19 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_mem.h`.
 
-Copyright (c) 2025 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Memory Utilities
 
 Memory allocation and memory manipulation utilities.
 
-<a name="line-undefined"></a>
+<a name="line-16"></a>
 ## Macros
 
-<a name="line-undefined"></a>
+<a name="line-20"></a>
 
 ```cpp
-#define BXR_ALLOC(nbytes) SDL_malloc((size_t)(nbytes))
+#define BXR_ALLOC(nbytes)
 ```
 
 Allocate uninitialized memory.
@@ -27,10 +27,10 @@ Allocate uninitialized memory.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-31"></a>
 
 ```cpp
-#define BXR_CALLOC(count, nbytes) SDL_calloc((size_t)(count), (size_t)(nbytes))
+#define BXR_CALLOC(count, nbytes)
 ```
 
 Allocate zero-initialized memory for an array.
@@ -46,10 +46,10 @@ Allocate zero-initialized memory for an array.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-44"></a>
 
 ```cpp
-#define BXR_NEW(ptr) ((ptr) = BXR_ALLOC(sizeof *(ptr)))
+#define BXR_NEW(ptr)
 ```
 
 Allocate one uninitialized object of the type pointed to by `ptr`.
@@ -63,10 +63,10 @@ Allocate one uninitialized object of the type pointed to by `ptr`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-55"></a>
 
 ```cpp
-#define BXR_NEW0(ptr) ((ptr) = BXR_CALLOC(1, sizeof *(ptr)))
+#define BXR_NEW0(ptr)
 ```
 
 Allocate one zero-initialized object of the type pointed to by `ptr`.
@@ -80,10 +80,10 @@ Allocate one zero-initialized object of the type pointed to by `ptr`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-66"></a>
 
 ```cpp
-#define BXR_FREE(ptr) ((void)(SDL_free(ptr), (ptr) = NULL))
+#define BXR_FREE(ptr)
 ```
 
 Free memory and set `ptr` to NULL.
@@ -94,10 +94,10 @@ allowed.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-74"></a>
 
 ```cpp
-#define BXR_RESIZE(ptr, nbytes) SDL_realloc((ptr), (size_t)(nbytes))
+#define BXR_RESIZE(ptr, nbytes)
 ```
 
 Resize a block of memory.
@@ -113,11 +113,10 @@ Resize a block of memory.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-87"></a>
 
 ```cpp
-#define BXR_MEMSET(ptr, value, nbytes)                                         \
-  SDL_memset((ptr), (value), (size_t)(nbytes))
+#define BXR_MEMSET(ptr, value, nbytes)
 ```
 
 Fill `nbytes` of memory at `ptr` with the byte `value`.
@@ -127,11 +126,10 @@ Fill `nbytes` of memory at `ptr` with the byte `value`.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-95"></a>
 
 ```cpp
-#define BXR_MEMCPY(dest, src, nbytes)                                          \
-  SDL_memcpy((dest), (src), (size_t)(nbytes))
+#define BXR_MEMCPY(dest, src, nbytes)
 ```
 
 Copy `nbytes` from `src` to `dest`, the regions must not overlap.
@@ -141,11 +139,10 @@ Copy `nbytes` from `src` to `dest`, the regions must not overlap.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-103"></a>
 
 ```cpp
-#define BXR_MEMMOVE(dest, src, nbytes)                                         \
-  SDL_memmove((dest), (src), (size_t)(nbytes))
+#define BXR_MEMMOVE(dest, src, nbytes)
 ```
 
 Copy `nbytes` from `src` to `dest`, the regions may overlap.
@@ -155,11 +152,10 @@ Copy `nbytes` from `src` to `dest`, the regions may overlap.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-111"></a>
 
 ```cpp
-#define BXR_MEMCMP(ptr1, ptr2, nbytes)                                         \
-  SDL_memcmp((ptr1), (ptr2), (size_t)(nbytes))
+#define BXR_MEMCMP(ptr1, ptr2, nbytes)
 ```
 
 Compare the first `nbytes` of two memory regions.

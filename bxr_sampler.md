@@ -1,7 +1,7 @@
-<a name="line-undefined"></a>
+<a name="line-1"></a>
 File `bxr_sampler.h`.
 
-Copyright (c) 2026 nsix. All rights reserved.
+Copyright (c) 2025 - 2026 nsix. All rights reserved.
 
 # Samplers
 
@@ -10,10 +10,12 @@ samplers used to sample textures in shaders.
 Create a sampler from one of the `bxr_sampler_e` presets, bind it with
 `bxr_painter_set_sampler()`, and release it with `bxr_sampler_destroy()`.
 
-<a name="line-undefined"></a>
+See `bxr_pipeline.h` for a typical usage example.
+
+<a name="line-23"></a>
 ## Enums
 
-<a name="line-undefined"></a>
+<a name="line-27"></a>
 
 ```cpp
 typedef enum
@@ -32,10 +34,10 @@ Sampler presets: filtering (point = nearest, linear) and address mode
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-40"></a>
 ## Typedefs
 
-<a name="line-undefined"></a>
+<a name="line-44"></a>
 
 ```cpp
 typedef struct bxr_sampler_s
@@ -49,10 +51,10 @@ Handle to a GPU sampler.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-52"></a>
 ## API
 
-<a name="line-undefined"></a>
+<a name="line-56"></a>
 
 ```cpp
 BXR_API bxr_sampler_t bxr_sampler_create(bxr_sampler_e sampler_type)
@@ -73,7 +75,7 @@ Call `bxr_get_error()` for more information.
 ---
 
 
-<a name="line-undefined"></a>
+<a name="line-71"></a>
 
 ```cpp
 BXR_API void bxr_sampler_destroy(bxr_sampler_t *sampler)
