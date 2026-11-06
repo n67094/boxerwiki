@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_error.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Error Handling
 
 Failing boxer functions store a message describing the error; read it with

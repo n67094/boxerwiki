@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_game.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Game Lifecycle
 
 Boxer owns `main()`. Don't implement it yourself. Use the five callbacks

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_gamepad.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Gamepad Handling
 
 Up to `BXR_GAMEPAD_MAX` gamepads are tracked.

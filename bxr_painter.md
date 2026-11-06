@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_painter.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # 2D Painter
 
 Immediate-mode 2D renderer (thin wrapper over SDL_gp).

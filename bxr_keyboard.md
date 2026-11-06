@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_keyboard.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Keyboard Handling
 
 `bxr_key_e` values are based on scancode (the physical location of

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_log.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Logging Utilities
 
 The default minimum priority is `BXR_LOG_PRIORITY_DEBUG`, so every level is

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_pixel.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Pixel Formats
 
 Pixel formats used by boxer images.

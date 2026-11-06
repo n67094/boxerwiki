@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_sampler.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Samplers
 
 samplers used to sample textures in shaders.

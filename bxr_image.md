@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_image.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Image
 
 Images are handles (`bxr_image_t`) created from asset files mounted with the

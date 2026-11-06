@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_mem.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Memory Utilities
 
 Memory allocation and memory manipulation utilities.

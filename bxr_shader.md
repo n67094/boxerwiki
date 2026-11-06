@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_shader.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Shaders
 
 shaders loaded from bytecode files in the mounted asset directories.

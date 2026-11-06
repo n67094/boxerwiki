@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_mouse.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Mouse Handling
 
 The mouse position is tracked in the game's virtual resolution, and the mouse

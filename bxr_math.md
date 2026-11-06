@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_math.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Math Utilities
 
 2D vector, line, triangle and rectangle types with their helpers, plus

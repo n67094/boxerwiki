@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_config.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Configuration
 
 Compile-time limits and default sizes for each boxer subsystem. Changing a

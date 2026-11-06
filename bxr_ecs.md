@@ -1,11 +1,6 @@
 <a name="line-1"></a>
-File `bxr_ecs.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 This is an altered version of pico_ecs by James McLean
 (https://github.com/empyreanx/pico_headers).
-Copyright (c) 2025 James McLean.
 
 # Entity Component System (ECS)
 

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_time.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Time Utilities
 
 Elapsed time since startup, blocking delays, and timers calling a callback

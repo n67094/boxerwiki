@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_string.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # String Utilities
 
 Utilities for character classification, string manipulation, number

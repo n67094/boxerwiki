@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_defs.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Global Definitions
 
 Export and inline macros, and small helper macros (`BXR_ARRAY_SIZE()`,

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_color.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Color Utilities
 
 RGBA color type (`bxr_color_t`), a set of predefined colors

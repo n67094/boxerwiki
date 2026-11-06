@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_context.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Global Context
 
 Access to the window and GPU device owned by the engine: window and virtual

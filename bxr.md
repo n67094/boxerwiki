@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr.h`.
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Main Header
 
 Boxer is a lightweight 2D game framework built for rapid development of

@@ -1,8 +1,4 @@
 <a name="line-1"></a>
-File `bxr_assert.h`
-
-Copyright (c) 2025 - 2026 nsix. All rights reserved.
-
 # Assertion
 
 Asserts that an expression is true, and aborts the program if it is false.
