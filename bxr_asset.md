@@ -50,6 +50,7 @@ Mounting an already mounted path does nothing and succeeds.
 not be NULL.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ---
@@ -72,6 +73,7 @@ Add an archive held in memory to the end of the read search path.
 NULL.
 
 `return` true on success, false on failure.
+
 Call `bxr_get_error()` for more information.
 
 ---

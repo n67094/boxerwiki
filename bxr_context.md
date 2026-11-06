@@ -6,50 +6,7 @@ Copyright (c) 2026 nsix. All rights reserved.
 # Global Context
 
 <a name="line-undefined"></a>
-## Typedefs
-
-<a name="line-undefined"></a>
-
-```cpp
-typedef struct bxr_context_s
-{
-  bxr_game_config_t config;
-
-  SDL_Window *window;
-  SDL_PixelFormat pixel_format;
-  SDL_GPUTextureFormat texture_format;
-  SDL_GPUDevice *gpu_device;
-
-  Uint64 target_delta_ns; // fixed time between updates, never 0.
-  Uint64 frame_count; // number of frames rendered since the application started
-} bxr_context_t
-```
-
-Global context of the application.
-
-Contains the configuration, the window, the GPU device and other global
-state.
-
----
-
-
-<a name="line-undefined"></a>
 ## API
-
-<a name="line-undefined"></a>
-
-```cpp
-BXR_API bxr_context_t *bxr_context_get(void)
-```
-
-Get the global context and create it if it doesn't exist yet.
-
-`return` the global context, or `NULL` if the allocation failed.
-
-**Note**: the context is owned by the engine, the caller must not free it.
-
----
-
 
 <a name="line-undefined"></a>
 
