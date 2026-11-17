@@ -1,8 +1,9 @@
 <a name="line-1"></a>
 # Game Lifecycle
 
-Boxer owns `main()`. Don't implement it yourself. Use the five callbacks
-below to implement your game logic:
+Boxer owns `main()`. Don't implement it yourself. Include `bxr_main.h` in
+exactly one source file of your game, and use the five callbacks below to
+implement your game logic:
 
 - `bxr_game_config()`
 - `bxr_game_setup()`
@@ -13,6 +14,9 @@ below to implement your game logic:
 Typical usage:
 
 ```cpp
+#include <boxer/bxr.h>
+#include <boxer/bxr_main.h> // in one source file only
+
 static bxr_game_config_t _config = { 0 };
 
 const bxr_game_config_t *bxr_game_config(void) {
@@ -41,10 +45,10 @@ void bxr_game_render(double alpha_ms) {
 void bxr_game_teardown(void) { ... }       // release assets, destroy state
 ```
 
-<a name="line-54"></a>
+<a name="line-60"></a>
 ## Typedefs
 
-<a name="line-58"></a>
+<a name="line-64"></a>
 
 ```cpp
 typedef struct bxr_game_config_s
@@ -60,6 +64,9 @@ typedef struct bxr_game_config_s
 
   bool fullscreen;
   bool resizable;
+
+  bool vsync;
+  unsigned int max_fps;
 } bxr_game_config_t
 ```
 
@@ -81,13 +88,19 @@ not larger than `width` and `height`.
 
 `resizable` allow the user to resize the window.
 
+`vsync` wait for the display refresh before presenting a frame (no tearing,
+frame rate limited to the refresh rate). When `false`, frames are presented
+as soon as they are ready.
+
+`max_fps` frame rate cap used only when `vsync` is `false`, `0` for no cap.
+
 ---
 
 
-<a name="line-92"></a>
+<a name="line-107"></a>
 ## API
 
-<a name="line-96"></a>
+<a name="line-111"></a>
 
 ```cpp
 extern const bxr_game_config_t *bxr_game_config(void)
@@ -104,7 +117,7 @@ after the call, so a `static` variable is enough and nothing is freed.
 ---
 
 
-<a name="line-107"></a>
+<a name="line-122"></a>
 
 ```cpp
 extern void bxr_game_setup(void)
@@ -118,7 +131,7 @@ can be used here.
 ---
 
 
-<a name="line-115"></a>
+<a name="line-130"></a>
 
 ```cpp
 extern void bxr_game_update(double delta_ms)
@@ -138,7 +151,7 @@ at most 5 steps are caught up and the remaining lag is dropped.
 ---
 
 
-<a name="line-129"></a>
+<a name="line-144"></a>
 
 ```cpp
 extern void bxr_game_render(double alpha_ms)
@@ -156,7 +169,7 @@ state for smooth rendering.
 ---
 
 
-<a name="line-141"></a>
+<a name="line-156"></a>
 
 ```cpp
 extern void bxr_game_teardown(void)

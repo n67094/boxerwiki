@@ -17,7 +17,7 @@ BXR_UNIT_SUITE(test_suite) { // Define suite
 BXR_UNIT_RUN_SUITE(test_suite) // Run suite
 ```
 
-<a name="line-30"></a>
+<a name="line-32"></a>
 
 ```cpp
 typedef bool (*bxr_unit_case_cb)(void)
@@ -27,7 +27,7 @@ typedef bool (*bxr_unit_case_cb)(void)
 ---
 
 
-<a name="line-33"></a>
+<a name="line-35"></a>
 
 ```cpp
 typedef void (*bxr_unit_suite_cb)(void)
@@ -37,10 +37,10 @@ typedef void (*bxr_unit_suite_cb)(void)
 ---
 
 
-<a name="line-43"></a>
+<a name="line-45"></a>
 API
 
-<a name="line-47"></a>
+<a name="line-49"></a>
 
 ```cpp
 #define BXR_UNIT_RUN_SUITE(suite_cb)
@@ -53,7 +53,7 @@ Runs a test suite function and reports the results to the console.
 ---
 
 
-<a name="line-54"></a>
+<a name="line-56"></a>
 
 ```cpp
 #define BXR_UNIT_SUITE(name)
@@ -66,7 +66,7 @@ Defines a test suite function.
 ---
 
 
-<a name="line-61"></a>
+<a name="line-63"></a>
 
 ```cpp
 #define BXR_UNIT_RUN_CASE(test_cb)
@@ -79,7 +79,7 @@ Runs a single unit test case and reports the result to the console.
 ---
 
 
-<a name="line-68"></a>
+<a name="line-70"></a>
 
 ```cpp
 #define BXR_UNIT_CASE(name)
@@ -94,7 +94,7 @@ Defines a test case function.
 ---
 
 
-<a name="line-77"></a>
+<a name="line-79"></a>
 
 ```cpp
 #define BXR_UNIT_ASSERT(expr)
@@ -109,7 +109,7 @@ Asserts that an expression is true.
 ---
 
 
-<a name="line-90"></a>
+<a name="line-92"></a>
 
 ```cpp
 typedef void (*bxr_unit_setup_cb)(void)
@@ -120,10 +120,10 @@ Functions that are run before and/or after a number of unit tests execute.
 ---
 
 
-<a name="line-95"></a>
+<a name="line-97"></a>
 
 ```cpp
-void bxr_unit_setup(bxr_unit_setup_cb setup_cb, bxr_unit_setup_cb teardown_cb)
+BXR_API void bxr_unit_setup(bxr_unit_setup_cb setup_cb, bxr_unit_setup_cb teardown_cb)
 ```
 
 Sets the current setup and teardown functions.
@@ -138,10 +138,10 @@ function after. Either of these functions can be `NULL`.
 ---
 
 
-<a name="line-107"></a>
+<a name="line-109"></a>
 
 ```cpp
-void bxr_unit_clear_setup(void)
+BXR_API void bxr_unit_clear_setup(void)
 ```
 
 Disables the setup and teardown functions by setting them to `NULL`.
@@ -149,10 +149,10 @@ Disables the setup and teardown functions by setting them to `NULL`.
 ---
 
 
-<a name="line-112"></a>
+<a name="line-114"></a>
 
 ```cpp
-void bxr_unit_enable_colors(bool enabled)
+BXR_API void bxr_unit_enable_colors(bool enabled)
 ```
 
 Enables or disables colored output in the console.
@@ -162,10 +162,10 @@ Enables or disables colored output in the console.
 ---
 
 
-<a name="line-119"></a>
+<a name="line-121"></a>
 
 ```cpp
-void bxr_unit_report(void)
+BXR_API void bxr_unit_report(void)
 ```
 
 Reports the results of the unit tests to the console.
@@ -173,10 +173,10 @@ Reports the results of the unit tests to the console.
 ---
 
 
-<a name="line-124"></a>
+<a name="line-126"></a>
 
 ```cpp
-bool bxr_unit_failed(void)
+BXR_API bool bxr_unit_failed(void)
 ```
 
 Check whether at least one test failed.

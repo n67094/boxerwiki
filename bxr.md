@@ -11,7 +11,7 @@ game mechanics, which makes it a great fit for beginners and hobbyists.
 <a name="line-49"></a>
 
 ```cpp
-void bxr_quit(void)
+BXR_API void bxr_quit(void)
 ```
 
 Request the application to exit.

@@ -4,7 +4,7 @@
 Export and inline macros, and small helper macros (`BXR_ARRAY_SIZE()`,
 `BXR_DEFAULT()`, terminal escape codes, ...) shared by every boxer header.
 
-<a name="line-37"></a>
+<a name="line-39"></a>
 
 ```cpp
 #define BXR_DEFAULT(val, def)
@@ -15,7 +15,7 @@ Returns `def` if `val` is 0, otherwise returns `val`.
 ---
 
 
-<a name="line-42"></a>
+<a name="line-44"></a>
 
 ```cpp
 #define BXR_OFFSET_OF(TYPE, ELEMENT)
@@ -26,7 +26,7 @@ Returns the offset of `ELEMENT` in `TYPE`, in bytes.
 ---
 
 
-<a name="line-47"></a>
+<a name="line-49"></a>
 
 ```cpp
 #define BXR_ARRAY_SIZE(arr)
@@ -37,7 +37,7 @@ Returns the number of elements in an array. Must not be a pointer.
 ---
 
 
-<a name="line-52"></a>
+<a name="line-54"></a>
 
 ```cpp
 #define BXR_TERM_ESC
